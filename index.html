@@ -1,13 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/main.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Green Carbon Calculator</title>
+</head>
+
+<body>
+  <h1>Check Your Website</h1>
+  <form action="index.html" method="post" class="contact-form">
+    <div id="cia-name-container">
+      <input type="text" name="company-name" autocomplete="off" required>
+      <label for="comapny-name" class="cia-name">
+        <span class="content-cia">Company Name</span>
+      </label>
+    </div>
+
+    <div id="url-container">
+      <input type="url" name="url" autocomplete="off" required>
+      <label for="url" class="url">
+        <span class="content-url">Company URL</span>
+      </label>
+    </div>
+    <div id="email-container">
+      <input type="email" name="email" autocomplete="off" required>
+      <label for="email" class="email">
+        <span class="content-email">E-mail</span>
+      </label>
+    </div>
+    <div id="contact-container">
+      <select name="contact-name" class="select">
+        <option value=" Landbrug/Fødevareproduktion">Landbrug/Fødevareproduktion</option>
+        <option value="Den finansielle sektor">Den finansielle sektor</option>
+        <option value="Tøj- og modebranchen">Tøj- og modebranchen</option>
+        <option value="Tech- og databranchen">Tech- og databranchen</option>
+        <option value="Bygge- og anlægsbranchen">Bygge- og anlægsbranchen</option>
+        <option value="Transportsektoren">Transportsektoren</option>
+        <option value="Kultur, sport og underholdningsbranchen">Kultur, sport og underholdningsbranchen</option>
+        <option value="Hotel- og restaurationsbranchen">Hotel- og restaurationsbranchen</option>
+        <option value="Energisektoren">Energisektoren</option>
+        <option value="Dagligvarehandlen">Dagligvarehandlen</option>
+
+      </select>
+      <label for="contact-name" class="contact-name">
+        <span class="content-contact">Industry</span>
+      </label>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  <script type="module" src="/main.js"></script>
+</body>
+
 </html>
