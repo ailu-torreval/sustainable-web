@@ -10,5 +10,17 @@
   "devDependencies": {
     "sass": "^1.49.9",
     "vite": "^2.8.0"
-  }
+  },
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ailu-torreval/sustainable-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ailu-torreval/sustainable-web/issues"
+  },
+  "homepage": "https://github.com/ailu-torreval/sustainable-web#readme",
+  "description": ""
 }
