@@ -1,6 +1,78 @@
-body {
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Ubuntu:wght@300&display=swap');
 
+*{
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+  color: var(--white);
+}
+:root{
+  --black: #0D0D0D;
+  --dark-green: #242B29;
+  --pink:#F2508B;
+  --dark-pink: #593945;
+  --blue: #716DF2;
+  --green: #63F2B0;
+  --white: #DCDDDD;
+  --gradient-background: linear-gradient(229deg, rgba(59,37,45,1) 10%, rgba(72,93,87,1) 57%, rgba(36,43,41,1) 71%, rgba(45,32,37,1) 85%);
+  --body-font:'Ubuntu', sans-serif;
+
+}
+body{
+  font-family: var(--body-font);
+  font-size: 1rem;
+  background: var(--gradient-background);
+
+  h1{
+    text-align: center;
+    margin-block-start: 3rem;
+  }
+}
+header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2rem;
+  
+  ul{
+   display: flex;
+   flex-direction: row;
+   
+   li{
+    margin-right: 1rem;
+  }
+}
+}
+a {
+  text-decoration: none;
+  font-size: 1.5rem;
+}
 .hidden {
   display: none;
+}
+#page1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+form{
+  margin-top: 2rem;
+  padding: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 45rem;
+  height: 25rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(25px);
+  border-radius: 5%;
+  background-color: var(--dark-green);
+  input{
+    width: 20vw;
+    height: 2rem;
+    border-style: none;
+    background-color: transparent;
+    border: 1px solid var(--dark-pink);
+  }
 }

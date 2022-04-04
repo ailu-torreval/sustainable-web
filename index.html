@@ -8,7 +8,11 @@
   <title>Green Carbon Calculator</title>
 </head>
 <header>
-  <a href="index.html">Green Carbon Calculator</a>
+  <a href="index.html">
+  <div class="logo">
+    <h4>ADVICE</h4>
+  </div>
+</a>
   <ul>
     <li>About Us</li>
     <li>Run the test again</li>
@@ -16,29 +20,33 @@
 </header>
 
 <body>
+  <h1> Green Carbon calculator</h1>
   <section id="page1">
-    <h1>Check Your Website</h1>
+    <h3>Check Your Website</h3>
     <form action="index.html" method="post" class="contact-form">
-      <div id="cia-name-container">
-        <input type="text" name="company-name" autocomplete="off" required>
+     
         <label for="comapny-name" class="cia-name">
           <span class="content-cia">Company Name</span>
         </label>
-      </div>
+        <input type="text" name="company-name" autocomplete="off" required>
+     
 
-      <div id="url-container">
-        <input type="url" name="url" autocomplete="off" required>
+      
         <label for="url" class="url">
           <span class="content-url">Company URL</span>
         </label>
-      </div>
-      <div id="email-container">
-        <input type="email" name="email" autocomplete="off" required>
+        <input type="url" name="url" autocomplete="off" required>
+      
+      
         <label for="email" class="email">
           <span class="content-email">E-mail</span>
         </label>
-      </div>
-      <div id="contact-container">
+        <input type="email" name="email" autocomplete="off" required>
+      
+    
+        <label for="contact-name" class="contact-name">
+          <span class="content-contact">Industry</span>
+        </label>
         <select name="contact-name" class="select">
           <option value="Select an Industry">Select an Industry</option>
           <option value=" Landbrug/Fødevareproduktion">Landbrug/Fødevareproduktion</option>
@@ -53,10 +61,7 @@
           <option value="Dagligvarehandlen">Dagligvarehandlen</option>
 
         </select>
-        <label for="contact-name" class="contact-name">
-          <span class="content-contact">Industry</span>
-        </label>
-      </div>
+      
       <button type="submit">Submit</button>
     </form>
     <a href="calculator.html">next page</a>
