@@ -46,8 +46,6 @@ const Results = {
   lazyLoading: false,
 };
 
-
-
 function checkSubmit() {
   if (form.checkValidity()) {
     submitUrl();
@@ -158,124 +156,122 @@ function resultsReady(results) {
   showResults(results);
 }
 
-// function showResults() {
-//   console.log("res", fixedResults);
-//   document.querySelector("#url-name").textContent = fixedResults.company;
-//   if (fixedResults.cleanerThan > 50) {
-//     document.querySelector("#cleaner-txt").classList.remove("hidden");
-//     document.querySelector("#dirtier-txt").classList.add("hidden");
-//     document.querySelector("#cleaner-nr").textContent =
-//       fixedResults.cleanerThan;
-//   } else {
-//     document.querySelector("#dirtier-txt").classList.remove("hidden");
-//     document.querySelector("#cleaner-txt").classList.add("hidden");
-//     document.querySelector("#dirtier-nr").textContent =
-//       fixedResults.cleanerThan;
-//   }
-//   document.querySelector("#co2-nr").textContent = fixedResults.gridCo2;
+function showResults(results) {
+  console.log("res", results);
+  document.querySelector("#url-name").textContent = results.company;
+  if (results.cleanerThan > 50) {
+    document.querySelector("#cleaner-txt").classList.remove("hidden");
+    document.querySelector("#dirtier-txt").classList.add("hidden");
+    document.querySelector("#cleaner-nr").textContent = results.cleanerThan;
+  } else {
+    document.querySelector("#dirtier-txt").classList.remove("hidden");
+    document.querySelector("#cleaner-txt").classList.add("hidden");
+    document.querySelector("#dirtier-nr").textContent = results.cleanerThan;
+  }
+  document.querySelector("#co2-nr").textContent = results.gridCo2;
 
-//   if (fixedResults.greenHost) {
-//     document.querySelector("#green-host-container").classList.remove("hidden");
-//     document.querySelector("#red-host-container").classList.add("hidden");
-//   } else {
-//     document.querySelector("#green-host-container").classList.add("hidden");
-//     document.querySelector("#red-host-container").classList.remove("hidden");
-//   }
-//   document.querySelector("#weight-nr").textContent = fixedResults.bytes;
-//   displayParamsData();
-// }
+  if (results.greenHost) {
+    document.querySelector("#green-host-container").classList.remove("hidden");
+    document.querySelector("#red-host-container").classList.add("hidden");
+  } else {
+    document.querySelector("#green-host-container").classList.add("hidden");
+    document.querySelector("#red-host-container").classList.remove("hidden");
+  }
+  document.querySelector("#weight-nr").textContent = results.bytes;
+  displayParamsData(results);
+}
 
-// function displayParamsData() {
-//   if (fixedResults.greenHost) {
-//     document.querySelector("#green-host").setAttribute("checked", true);
-//     document.querySelector("#host-txt").classList.add("hidden");
-//   } else {
-//     document.querySelector("#host-txt").classList.remove("hidden");
-//   }
-//   if (fixedResults.lazyLoading) {
-//     document.querySelector("#lazy-load-container").classList.add("hidden");
-//     document.querySelector("#opt-lazy-loading").classList.remove("hidden");
-//     document.querySelector("#opt-lazy-nr").textContent = fixedResults.lazyImg;
-//   } else {
-//     document.querySelector("#lazy-load-container").classList.remove("hidden");
-//     document.querySelector("#opt-lazy-loading").classList.add("hidden");
-//     document.querySelector("#lazy-nr").textContent = fixedResults.lazyImg;
-//   }
-//   document.querySelector("#resp-nr").textContent = fixedResults.respImg;
-//   document.querySelector("#code-nr").textContent = fixedResults.optCode;
+function displayParamsData(results) {
+  if (results.greenHost) {
+    document.querySelector("#green-host").setAttribute("checked", true);
+    document.querySelector("#host-txt").classList.add("hidden");
+  } else {
+    document.querySelector("#host-txt").classList.remove("hidden");
+  }
+  if (results.lazyLoading) {
+    document.querySelector("#lazy-load-container").classList.add("hidden");
+    document.querySelector("#opt-lazy-loading").classList.remove("hidden");
+    document.querySelector("#opt-lazy-nr").textContent = results.lazyImg;
+  } else {
+    document.querySelector("#lazy-load-container").classList.remove("hidden");
+    document.querySelector("#opt-lazy-loading").classList.add("hidden");
+    document.querySelector("#lazy-nr").textContent = results.lazyImg;
+  }
+  document.querySelector("#resp-nr").textContent = results.respImg;
+  document.querySelector("#code-nr").textContent = results.optCode;
 
-//   // document.querySelector("#imgRange").addEventListener("chenge", changeSlider);
-//   document.querySelector("#green-host").addEventListener("change", (e) => {
-//     if (e.target.checked) {
-//       console.log("is checked");
-//       fixedResults.lazyLoading = true;
-//       getNewRes();
-//     } else {
-//       console.log("is not checked");
-//       fixedResults.lazyLoading = false;
-//       getNewRes();
-//     }
-//   });
-//   document.querySelector("#lazy-loading").addEventListener("change", (e) => {
-//     if (e.target.checked) {
-//       console.log("is checked");
-//       improvNr = improvNr++ + fixedResults.lazyImg;
-//       getNewRes();
-//     } else {
-//       console.log("is not checked");
-//       improvNr = improvNr-- - fixedResults.lazyImg;
-//       getNewRes();
-//     }
-//   });
-//   document
-//     .querySelector("#opt-lazy-loading")
-//     .addEventListener("change", (e) => {
-//       if (e.target.checked) {
-//         // improvNr.push(fixedResults.lazyImg);
-//         improvNr = improvNr++ + fixedResults.lazyImg;
-//         console.log(improvNr);
-//         getNewRes();
-//       } else {
-//         console.log("is not checked");
-//         improvNr = improvNr-- - fixedResults.lazyImg;
-//         getNewRes();
-//       }
-//     });
+  // document.querySelector("#imgRange").addEventListener("chenge", changeSlider);
+  document.querySelector("#green-host").addEventListener("change", (e) => {
+    if (e.target.checked) {
+      console.log("is checked");
+      results.lazyLoading = true;
+      getNewRes();
+    } else {
+      console.log("is not checked");
+      results.lazyLoading = false;
+      getNewRes();
+    }
+  });
+  document.querySelector("#lazy-loading").addEventListener("change", (e) => {
+    if (e.target.checked) {
+      console.log("is checked");
+      improvNr = improvNr++ + results.lazyImg;
+      getNewRes();
+    } else {
+      console.log("is not checked");
+      improvNr = improvNr-- - results.lazyImg;
+      getNewRes();
+    }
+  });
+  document
+    .querySelector("#opt-lazy-loading")
+    .addEventListener("change", (e) => {
+      if (e.target.checked) {
+        // improvNr.push(fixedResults.lazyImg);
+        improvNr = improvNr++ + results.lazyImg;
+        console.log(improvNr);
+        getNewRes();
+      } else {
+        console.log("is not checked");
+        improvNr = improvNr-- - results.lazyImg;
+        getNewRes();
+      }
+    });
 
-//   document.querySelector("#resp-img-opt").addEventListener("change", (e) => {
-//     if (e.target.checked) {
-//       console.log("is checked");
-//       improvNr = improvNr++ + fixedResults.respImg;
-//       getNewRes();
-//       console.log(improvNr);
-//     } else {
-//       improvNr = improvNr-- - fixedResults.respImg;
-//       console.log("is not checked");
-//       getNewRes();
-//     }
-//   });
+  document.querySelector("#resp-img-opt").addEventListener("change", (e) => {
+    if (e.target.checked) {
+      console.log("is checked");
+      improvNr = improvNr++ + results.respImg;
+      getNewRes();
+      console.log(improvNr);
+    } else {
+      improvNr = improvNr-- - results.respImg;
+      console.log("is not checked");
+      getNewRes();
+    }
+  });
 
-//   document.querySelector("#code-opt").addEventListener("change", (e) => {
-//     if (e.target.checked) {
-//       console.log("is checked");
-//       improvNr = improvNr++ + fixedResults.optCode;
-//       getNewRes();
-//     } else {
-//       console.log("is not checked");
-//       improvNr = improvNr-- - fixedResults.optCode;
+  document.querySelector("#code-opt").addEventListener("change", (e) => {
+    if (e.target.checked) {
+      console.log("is checked");
+      improvNr = improvNr++ + results.optCode;
+      getNewRes();
+    } else {
+      console.log("is not checked");
+      improvNr = improvNr-- - results.optCode;
 
-//       getNewRes();
-//     }
-//   });
+      getNewRes();
+    }
+  });
 
-//   // document
-//   //   .querySelector("#opt-lazy-loading")
-//   //   .addEventListener("chenge", changeOptLazy);
-//   // document
-//   //   .querySelector("#resp-img-opt")
-//   //   .addEventListener("chenge", changeRespImg);
-//   // document.querySelector("#code-opt").addEventListener("chenge", changeCode);
-// }
+  // document
+  //   .querySelector("#opt-lazy-loading")
+  //   .addEventListener("chenge", changeOptLazy);
+  // document
+  //   .querySelector("#resp-img-opt")
+  //   .addEventListener("chenge", changeRespImg);
+  // document.querySelector("#code-opt").addEventListener("chenge", changeCode);
+}
 
 // async function getNewRes() {
 //   // fetch("https://kea-alt-del.dk/websitecarbon//data?bytes=415249&green=1")
@@ -304,7 +300,6 @@ function resultsReady(results) {
 // }
 
 // dataArr[1]["unminified-javascript"];
-
 
 // document
 //   .querySelector(".submit-btn")
