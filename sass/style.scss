@@ -64,7 +64,7 @@ header {
   flex-direction: row;
   justify-content: space-between;
   padding: 2.5rem;
-  border-bottom: 1px solid var(--green);
+  // border-bottom: 1px solid var(--green);
   margin-inline-start: 2rem;
   margin-inline-end: 2rem;
   align-items: center;
@@ -177,6 +177,7 @@ select {
 #main {
   display: flex;
   flex-direction: row;
+  gap:2rem;
   h1 {
     text-align: center;
     margin-block-end: 2rem;
@@ -184,38 +185,82 @@ select {
 }
 
 //parameters styling
-#parameters {
-  max-width: 50vh;
-  box-shadow: 1px 1px 9px var(--green);
-  margin-top: 2rem;
-  border-radius: 10px;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-}
-#params-row1 {
-  display: flex;
-  flex-direction: column;
-}
-#checkbox-container {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-}
+#parameters { 
+
+  max-width: 50vh; 
+  // box-shadow: 1px 1px 9px var(--green); 
+  margin-top: 2rem; 
+  border-radius: 10px; 
+  padding: 1.5rem; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 3rem; 
+  background-color: var(--glass); 
+  
+  } 
+  #params-row1 { 
+
+    display: flex; 
+    
+    flex-direction: column; 
+    
+    border-bottom: 1px solid var(--glass); 
+    
+    padding-bottom: 2rem; 
+    
+    } 
+
+    #img-title{
+      margin-block-end: 0.5rem; 
+      } 
+      
+      #img-title{ 
+      line-height: 2rem; 
+      } 
+      
+      #img-txt{ 
+      font-size: 1rem; 
+      line-height: 1.75rem; 
+      font-style: italic; 
+      } 
+      
+       
+      #checkbox-container { 
+
+        display: flex; 
+        flex-direction: column; 
+        gap: 3rem; 
+        
+        } 
+        
+        .middle{ 
+        
+        display: flex; 
+        flex-direction: row; 
+        justify-content: space-between; 
+        
+        } 
+
+        #host-nr, #lazy-nr, #opt-lazy-nr, #resp-nr, #code-nr{ 
+          font-size: 1.25rem; 
+          
+          } 
 
 //results styling
-#results-card {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  // min-height: 59vh;
-  box-shadow: 1px 1px 9px var(--green);
-  border-radius: 10px;
-  margin-top: 2rem;
-  padding: 1.5rem;
-  border-radius: 10px;
-  background-color: var(--dark-green);
-}
+#results-card { 
+  display: grid; 
+  grid-template-rows: 1fr 1fr 1fr; 
+  // min-height: 59vh; 
+  // box-shadow: 1px 1px 9px var(--green); 
+  border-radius: 10px; 
+  margin-top: 2rem; 
+  padding: 1.5rem; 
+  border-radius: 10px; 
+  background-color: var(--glass); 
+  
+  } 
+  
+   
 
 #results-row1,
 #results-row2,
