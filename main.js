@@ -8,7 +8,7 @@ form.setAttribute("novalidate", true);
 let testUrl;
 let dataArr = [];
 let resultsArr = [];
-let improvNr = [];
+let improvNr = 0;
 let fixedResults = {
   company: "infobae",
   mail: "s@s.com",
@@ -214,9 +214,11 @@ function displayParamsData() {
   document.querySelector("#lazy-loading").addEventListener("change", (e) => {
     if (e.target.checked) {
       console.log("is checked");
+      improvNr = improvNr++ + fixedResults.lazyImg;
       getNewRes();
     } else {
       console.log("is not checked");
+      improvNr = improvNr-- - fixedResults.lazyImg;
       getNewRes();
     }
   });
@@ -224,10 +226,13 @@ function displayParamsData() {
     .querySelector("#opt-lazy-loading")
     .addEventListener("change", (e) => {
       if (e.target.checked) {
-        console.log("is checked");
+        // improvNr.push(fixedResults.lazyImg);
+        improvNr = improvNr++ + fixedResults.lazyImg;
+        console.log(improvNr);
         getNewRes();
       } else {
         console.log("is not checked");
+        improvNr = improvNr-- - fixedResults.lazyImg;
         getNewRes();
       }
     });
@@ -235,8 +240,11 @@ function displayParamsData() {
   document.querySelector("#resp-img-opt").addEventListener("change", (e) => {
     if (e.target.checked) {
       console.log("is checked");
+      improvNr = improvNr++ + fixedResults.respImg;
       getNewRes();
+      console.log(improvNr);
     } else {
+      improvNr = improvNr-- - fixedResults.respImg;
       console.log("is not checked");
       getNewRes();
     }
@@ -245,9 +253,12 @@ function displayParamsData() {
   document.querySelector("#code-opt").addEventListener("change", (e) => {
     if (e.target.checked) {
       console.log("is checked");
+      improvNr = improvNr++ + fixedResults.optCode;
       getNewRes();
     } else {
       console.log("is not checked");
+      improvNr = improvNr-- - fixedResults.optCode;
+
       getNewRes();
     }
   });
@@ -261,8 +272,30 @@ function displayParamsData() {
   // document.querySelector("#code-opt").addEventListener("chenge", changeCode);
 }
 
-function getNewRes() {
-  console.log("new results");
+async function getNewRes() {
+  // fetch("https://kea-alt-del.dk/websitecarbon//data?bytes=415249&green=1")
+  //   .then((res) => res.json())
+
+  //   .then(gotData);
+
+  // function gotData(bags) {
+  //   console.log(bags);
+  // }
+
+  //   const url1 = `https://kea-alt-del.dk/websitecarbon//data?bytes=415249&green=1`;
+
+  //   const speedData1 = await fetch(
+  //     `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&key=${key}`
+  //   );
+  //   const speedData = await speedData1.json();
+
+  const carbonData2 = await fetch(
+    "https://kea-alt-del.dk/websitecarbon//data?bytes=415249&green=1"
+  );
+  const carbonData3 = await carbonData2.json();
+  //   // when loaded, prepare data objects
+  //   prepareObjects(speedData, carbonData);}
+  console.log(carbonData3);
 }
 
 // dataArr[1]["unminified-javascript"];
