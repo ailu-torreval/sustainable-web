@@ -1,14 +1,17 @@
 "use strict";
 import "./sass/style.scss";
+
 document.querySelector(".submit-btn").addEventListener("click", checkSubmit);
+// resultsReady();
 
 const form = document.querySelector("form");
 form.setAttribute("novalidate", true);
 
 let testUrl;
 let dataArr = [];
-let improvNr = [];
 let resultsArr = [];
+let improvNr = 0;
+
 let fixedResults = {
   company: "infobae",
   mail: "s@s.com",
@@ -43,7 +46,7 @@ const Results = {
   lazyLoading: false,
 };
 
-// resultsReady();
+
 
 function checkSubmit() {
   if (form.checkValidity()) {
@@ -59,6 +62,7 @@ function submitUrl() {
   document.querySelector("#form").classList.add("hidden");
   document.querySelector("#form-container").classList.add("hidden");
   document.querySelector("#loading-wrapper").classList.remove("hidden");
+  showLoadingText();
   loadJSON();
 }
 
@@ -148,11 +152,11 @@ function prepareObject(dataArr) {
   return results;
 }
 
-// function resultsReady(results) {
-//   document.querySelector("#page1").classList.add("hidden");
-//   document.querySelector("#page2").classList.remove("hidden");
-//   showResults(results);
-// }
+function resultsReady(results) {
+  document.querySelector("#page1").classList.add("hidden");
+  document.querySelector("#page2").classList.remove("hidden");
+  showResults(results);
+}
 
 // function showResults() {
 //   console.log("res", fixedResults);
@@ -188,81 +192,123 @@ function prepareObject(dataArr) {
 //   } else {
 //     document.querySelector("#host-txt").classList.remove("hidden");
 //   }
-// }
-
-// // dataArr[1]["unminified-javascript"];
-
-// document.querySelector("#green-host").addEventListener("change", (e) => {
-//   if (e.target.checked) {
-//     console.log("is checked");
-//     fixedResults.lazyLoading = true;
-//     getNewRes();
+//   if (fixedResults.lazyLoading) {
+//     document.querySelector("#lazy-load-container").classList.add("hidden");
+//     document.querySelector("#opt-lazy-loading").classList.remove("hidden");
+//     document.querySelector("#opt-lazy-nr").textContent = fixedResults.lazyImg;
 //   } else {
-//     console.log("is not checked");
-//     fixedResults.lazyLoading = false;
-//     getNewRes();
+//     document.querySelector("#lazy-load-container").classList.remove("hidden");
+//     document.querySelector("#opt-lazy-loading").classList.add("hidden");
+//     document.querySelector("#lazy-nr").textContent = fixedResults.lazyImg;
 //   }
-// });
-// document.querySelector("#lazy-loading").addEventListener("change", (e) => {
-//   if (e.target.checked) {
-//     console.log("is checked");
-//     getNewRes();
-//   } else {
-//     console.log("is not checked");
-//     getNewRes();
-//   }
-// });
-// document
-//   .querySelector("#opt-lazy-loading")
-//   .addEventListener("change", (e) => {
+//   document.querySelector("#resp-nr").textContent = fixedResults.respImg;
+//   document.querySelector("#code-nr").textContent = fixedResults.optCode;
+
+//   // document.querySelector("#imgRange").addEventListener("chenge", changeSlider);
+//   document.querySelector("#green-host").addEventListener("change", (e) => {
 //     if (e.target.checked) {
 //       console.log("is checked");
+//       fixedResults.lazyLoading = true;
 //       getNewRes();
 //     } else {
+//       console.log("is not checked");
+//       fixedResults.lazyLoading = false;
+//       getNewRes();
+//     }
+//   });
+//   document.querySelector("#lazy-loading").addEventListener("change", (e) => {
+//     if (e.target.checked) {
+//       console.log("is checked");
+//       improvNr = improvNr++ + fixedResults.lazyImg;
+//       getNewRes();
+//     } else {
+//       console.log("is not checked");
+//       improvNr = improvNr-- - fixedResults.lazyImg;
+//       getNewRes();
+//     }
+//   });
+//   document
+//     .querySelector("#opt-lazy-loading")
+//     .addEventListener("change", (e) => {
+//       if (e.target.checked) {
+//         // improvNr.push(fixedResults.lazyImg);
+//         improvNr = improvNr++ + fixedResults.lazyImg;
+//         console.log(improvNr);
+//         getNewRes();
+//       } else {
+//         console.log("is not checked");
+//         improvNr = improvNr-- - fixedResults.lazyImg;
+//         getNewRes();
+//       }
+//     });
+
+//   document.querySelector("#resp-img-opt").addEventListener("change", (e) => {
+//     if (e.target.checked) {
+//       console.log("is checked");
+//       improvNr = improvNr++ + fixedResults.respImg;
+//       getNewRes();
+//       console.log(improvNr);
+//     } else {
+//       improvNr = improvNr-- - fixedResults.respImg;
 //       console.log("is not checked");
 //       getNewRes();
 //     }
 //   });
 
-// document.querySelector("#resp-img-opt").addEventListener("change", (e) => {
-//   if (e.target.checked) {
-//     console.log("is checked");
-//     getNewRes();
-//   } else {
-//     console.log("is not checked");
-//     getNewRes();
-//   }
-// });
+//   document.querySelector("#code-opt").addEventListener("change", (e) => {
+//     if (e.target.checked) {
+//       console.log("is checked");
+//       improvNr = improvNr++ + fixedResults.optCode;
+//       getNewRes();
+//     } else {
+//       console.log("is not checked");
+//       improvNr = improvNr-- - fixedResults.optCode;
 
-// document.querySelector("#code-opt").addEventListener("change", (e) => {
-//   if (e.target.checked) {
-//     console.log("is checked");
-//     getNewRes();
-//   } else {
-//     console.log("is not checked");
-//     getNewRes();
-//   }
-// });
+//       getNewRes();
+//     }
+//   });
 
-// // document
-// //   .querySelector("#opt-lazy-loading")
-// //   .addEventListener("chenge", changeOptLazy);
-// // document
-// //   .querySelector("#resp-img-opt")
-// //   .addEventListener("chenge", changeRespImg);
-// // document.querySelector("#code-opt").addEventListener("chenge", changeCode);
+//   // document
+//   //   .querySelector("#opt-lazy-loading")
+//   //   .addEventListener("chenge", changeOptLazy);
+//   // document
+//   //   .querySelector("#resp-img-opt")
+//   //   .addEventListener("chenge", changeRespImg);
+//   // document.querySelector("#code-opt").addEventListener("chenge", changeCode);
+// }
 
-// function getNewRes() {
-// console.log("new results");
+// async function getNewRes() {
+//   // fetch("https://kea-alt-del.dk/websitecarbon//data?bytes=415249&green=1")
+//   //   .then((res) => res.json())
+
+//   //   .then(gotData);
+
+//   // function gotData(bags) {
+//   //   console.log(bags);
+//   // }
+
+//   //   const url1 = `https://kea-alt-del.dk/websitecarbon//data?bytes=415249&green=1`;
+
+//   //   const speedData1 = await fetch(
+//   //     `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&key=${key}`
+//   //   );
+//   //   const speedData = await speedData1.json();
+
+//   const carbonData2 = await fetch(
+//     "https://kea-alt-del.dk/websitecarbon//data?bytes=415249&green=1"
+//   );
+//   const carbonData3 = await carbonData2.json();
+//   //   // when loaded, prepare data objects
+//   //   prepareObjects(speedData, carbonData);}
+//   console.log(carbonData3);
 // }
 
 // dataArr[1]["unminified-javascript"];
 
-// loading text
 
-document
-  .querySelector(".submit-btn")
-  .addEventListener("click", showLoadingText);
+// document
+//   .querySelector(".submit-btn")
+//   .addEventListener("click", showLoadingText);
 
 function showLoadingText() {
   setTimeout(showText, 1000);
