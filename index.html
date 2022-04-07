@@ -29,17 +29,18 @@
           <label for="comapny-name" class="cia-name">
             <span class="content-cia">Company Name</span>
           </label>
-          <input type="text" name="companyName" autocomplete="off" required>
+          <input type="text" name="companyName" autocomplete="off" required value="a">
           <label for="url" class="url">
             Company URL
           </label>
-          <input type="url" name="url" autocomplete="off" required>
+          <input type="url" name="url" autocomplete="off" required
+            value="https://www.lapa.ninja/blog/free-illustrations-library-for-your-project/">
 
 
           <label for="email" class="email">
             E-mail
           </label>
-          <input type="email" name="email" autocomplete="off" required>
+          <input type="email" name="email" autocomplete="off" required value="a@a.dk">
 
 
           <label for="contact-name" class="contact-name">
@@ -60,11 +61,12 @@
 
           </select>
 
-          <div class="btn-div">
-            <button class="submit-btn" type="button">See Results</button>
-          </div>
+
         </form>
       </article>
+      <div class="btn-div">
+        <button class="submit-btn draw-border" type="button">See Results</button>
+      </div>
       <article id="loading-screen" class="hidden">
         <div id="loading-graphic">this is a load graphic</div>
         <h3 id="clean-msg">Here some advice or data about sustainability</h3>
@@ -75,6 +77,50 @@
   <section id="page2" class="hidden">
     <section id="main">
       <h1 id="url-name">URL Name</h1>
+      <section id="parameters">
+        <h2 id="parameters-title">Change Parameters:</h2>
+        <article id="parameters-card">
+          <div id="params-row1">
+            <div id="img-slider-container">
+              <h3 id="img-title">Re-size Images</h3>
+              <div class="slidecontainer">
+                <input type="range" min="1" max="100" value="100" class="slider" id="myRange">
+              </div>
+            </div>
+            <h3 id="img-txt">Changing the image sizes and swapping for more modern image formats can be a huge
+              improvement. </h3>
+          </div>
+        </article>
+        <article id="checkbox-container">
+          <div id="green-host-container">
+            <label for="green-host"> Use a Green Host</label>
+            <input type="checkbox" id="green-host" name="green-host" value="yes">
+            <p id="host-txt">It could lower co2 emmissions by <span id="host-nr">34</span>%</p>
+          </div>
+          <div id="lazy-load-container">
+            <label for="lazy-loading"> Implement Lazy Loading</label>
+            <input type="checkbox" id="lazy-loading" name="lazy-loading" value="lazy-loading">
+            <p>Potential savings of <span id="lazy-nr">34</span> bytes.</p>
+          </div>
+          <div id="opt-lazy-loading">
+            <label for="opt-lazy-loading"> Improve Lazy Loading</label>
+            <input type="checkbox" id="opt-lazy-loading" name="opt-lazy-loading" value="opt-lazy-loading">
+            <p>This web uses lazy loading, but it can be optimized by <span id="opt-lazy-nr">34</span>bytes.</p>
+          </div>
+          <div id="resp-img-container">
+            <label for="resp-img-opt"> Use Responsive Images</label>
+            <input type="checkbox" id="resp-img-opt" name="resp-img-opt" value="resp-img-opt">
+            <p>Potential savings of <span id="resp-nr">34</span> bytes.</p>
+          </div>
+          <div id="code-container">
+            <label for="code-opt"> Code Optimizations</label>
+            <input type="checkbox" id="code-opt" name="code-opt" value="code-opt">
+            <p>Potential savings of <span id="code-nr">34</span> bytes.</p>
+          </div>
+
+        </article>
+
+      </section>
       <article id="results-card">
         <div id="results-row1">
           <div id="cleaner-graph"></div>
@@ -89,7 +135,7 @@
         <div id="results-row2">
           <h3 id="co2">It produces <span id="co2-nr"></span>g. of co2 every time is visited for the first time.</h3>
           <div id="results-host-container">
-            <div id="green-host-container" class="hidden">
+            <div id="green-host-container" class="">
               <div id="green-host-graph"></div>
               <h3 id="green-host-txt">This web is runned using renewable energies.</h3>
             </div>
@@ -105,49 +151,7 @@
         </div>
       </article>
     </section>
-    <section id="parameters">
-      <h2 id="parameters-title">Change Parameters:</h2>
-      <article id="parameters-card">
-        <div id="params-row1">
-          <div id="img-slider-container">
-            <h3 id="img-title">Re-size Images</h3>
-            <div class="slidecontainer">
-              <input type="range" min="1" max="100" value="100" class="slider" id="myRange">
-            </div>
-          </div>
-          <h3 id="img-txt">Changing the image sizes and swapping for more modern image formats can be a huge
-            improvement. </h3>
-        </div>
-      </article>
-      <article id="checkbox-container">
-        <div id="green-host-container">
-          <label for="green-host"> Use a Green Host</label>
-          <input type="checkbox" id="green-host" name="green-host" value="yes">
-          <p id="host-txt">It could lower co2 emmissions by <span id="host-nr">34</span>%</p>
-        </div>
-        <div id="lazy-load-container">
-          <label for="lazy-loading"> Implement Lazy Loading</label>
-          <input type="checkbox" id="lazy-loading" name="lazy-loading" value="lazy-loading">
-          <p>Potential savings of <span id="lazy-nr">34</span> bytes.</p>
-        </div>
-        <div id="opt-lazy-loading">
-          <label for="opt-lazy-loading"> Improve Lazy Loading</label>
-          <input type="checkbox" id="opt-lazy-loading" name="opt-lazy-loading" value="opt-lazy-loading">
-          <p>This web uses lazy loading, but it can be optimized by <span id="opt-lazy-nr">34</span>bytes.</p>
-        </div>
-        <div id="resp-img-container">
-          <label for="resp-img-opt"> Use Responsive Images</label>
-          <input type="checkbox" id="resp-img-opt" name="resp-img-opt" value="resp-img-opt">
-          <p>Potential savings of <span id="resp-nr">34</span> bytes.</p>
-        </div>
-        <div id="code-container">
-          <label for="code-opt"> Code Optimizations</label>
-          <input type="checkbox" id="code-opt" name="code-opt" value="code-opt">
-          <p>Potential savings of <span id="code-nr">34</span> bytes.</p>
-        </div>
 
-      </article>
-    </section>
   </section>
   <script type="module" src="/main.js"></script>
 </body>
