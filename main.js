@@ -8,6 +8,7 @@ form.setAttribute("novalidate", true);
 let testUrl;
 let dataArr = [];
 let resultsArr = [];
+let improvNr = [];
 let fixedResults = {
   company: "infobae",
   mail: "s@s.com",
@@ -186,6 +187,82 @@ function displayParamsData() {
   } else {
     document.querySelector("#host-txt").classList.remove("hidden");
   }
+  if (fixedResults.lazyLoading) {
+    document.querySelector("#lazy-load-container").classList.add("hidden");
+    document.querySelector("#opt-lazy-loading").classList.remove("hidden");
+    document.querySelector("#opt-lazy-nr").textContent = fixedResults.lazyImg;
+  } else {
+    document.querySelector("#lazy-load-container").classList.remove("hidden");
+    document.querySelector("#opt-lazy-loading").classList.add("hidden");
+    document.querySelector("#lazy-nr").textContent = fixedResults.lazyImg;
+  }
+  document.querySelector("#resp-nr").textContent = fixedResults.respImg;
+  document.querySelector("#code-nr").textContent = fixedResults.optCode;
+
+  // document.querySelector("#imgRange").addEventListener("chenge", changeSlider);
+  document.querySelector("#green-host").addEventListener("change", (e) => {
+    if (e.target.checked) {
+      console.log("is checked");
+      fixedResults.lazyLoading = true;
+      getNewRes();
+    } else {
+      console.log("is not checked");
+      fixedResults.lazyLoading = false;
+      getNewRes();
+    }
+  });
+  document.querySelector("#lazy-loading").addEventListener("change", (e) => {
+    if (e.target.checked) {
+      console.log("is checked");
+      getNewRes();
+    } else {
+      console.log("is not checked");
+      getNewRes();
+    }
+  });
+  document
+    .querySelector("#opt-lazy-loading")
+    .addEventListener("change", (e) => {
+      if (e.target.checked) {
+        console.log("is checked");
+        getNewRes();
+      } else {
+        console.log("is not checked");
+        getNewRes();
+      }
+    });
+
+  document.querySelector("#resp-img-opt").addEventListener("change", (e) => {
+    if (e.target.checked) {
+      console.log("is checked");
+      getNewRes();
+    } else {
+      console.log("is not checked");
+      getNewRes();
+    }
+  });
+
+  document.querySelector("#code-opt").addEventListener("change", (e) => {
+    if (e.target.checked) {
+      console.log("is checked");
+      getNewRes();
+    } else {
+      console.log("is not checked");
+      getNewRes();
+    }
+  });
+
+  // document
+  //   .querySelector("#opt-lazy-loading")
+  //   .addEventListener("chenge", changeOptLazy);
+  // document
+  //   .querySelector("#resp-img-opt")
+  //   .addEventListener("chenge", changeRespImg);
+  // document.querySelector("#code-opt").addEventListener("chenge", changeCode);
+}
+
+function getNewRes() {
+  console.log("new results");
 }
 
 // dataArr[1]["unminified-javascript"];
