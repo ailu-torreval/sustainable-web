@@ -1,12 +1,34 @@
 "use strict";
 import "./sass/style.scss";
-document.querySelector("#url-input").addEventListener("input", getUrl);
+document.querySelector(".submit-btn").addEventListener("click", checkSubmit);
+
+const form = document.querySelector("form");
+form.setAttribute("novalidate", true);
 
 let testUrl;
 let dataArr = [];
+let resultsArr = [];
+let fixedResults = {
+  company: "infobae",
+  mail: "s@s.com",
+  companyUrl: "https://www.infobae.com/america/",
+  bytes: 2647717,
+  cleanerThan: 34,
+  gridCo2: 1.5962,
+  renewCo2: 1.4466,
+  lazyImg: 814699,
+  respImg: 206178,
+  optImg: 734825,
+  optCode: 298160,
+  lazyLoading: true,
+  greenHost: true,
+  try: 593851.9572000001,
+};
+
 const Results = {
+  companyUrl: "",
   company: "",
-  // companyUrl: "",
+  mail: "",
   bytes: "",
   cleanerThan: "",
   gridCo2: "",
@@ -20,18 +42,22 @@ const Results = {
   lazyLoading: false,
 };
 
-function getUrl(e) {
-  // if (e.includes("https://")) {
-  //   if (e.includes("wwww.")) {
+// resultsReady();
 
-  //   }
-  // }
-  console.log("getUrl");
-  testUrl = e.target.value;
-  console.log("url is", testUrl);
-  // getAllData();
+function checkSubmit() {
+  if (form.checkValidity()) {
+    submitUrl();
+  } else {
+    console.log("please fill fields correctly");
+  }
+}
+
+function submitUrl() {
+  console.log(form.elements.url.value);
+  testUrl = form.elements.url.value;
+  document.querySelector("#form").classList.add("hidden");
+  document.querySelector("#loading-screen").classList.remove("hidden");
   loadJSON();
-  return testUrl;
 }
 
 async function loadJSON() {
@@ -60,7 +86,9 @@ function prepareObjects(speedData, carbonData) {
 function prepareObject(dataArr) {
   const results = Object.create(Results);
 
-  results.url = dataArr[0].url;
+  results.company = form.elements.companyName.value;
+  results.mail = form.elements.email.value;
+  results.companyUrl = testUrl;
 
   results.bytes = dataArr[0].bytes;
 
@@ -72,8 +100,6 @@ function prepareObject(dataArr) {
 
   let coRen = parseFloat(dataArr[0].statistics.co2.renewable.grams).toFixed(4);
   results.renewCo2 = Number(coRen);
-  // results.gridCo2 = dataArr[0].statistics.co2.grid.grams;
-  // results.renewCo2 = dataArr[0].statistics.co2.renewable.grams;
   results.lazyImg = dataArr[1]["offscreen-images"].details.overallSavingsBytes;
   results.respImg =
     dataArr[1]["uses-responsive-images"].details.overallSavingsBytes;
@@ -94,16 +120,17 @@ function prepareObject(dataArr) {
   results.optCode = codeData1 + codeData2 + codeData3 + codeData4;
 
   let isLazy = dataArr[1]["lcp-lazy-loaded"].title;
-  if (isLazy.includes("not")) {
-    results.lazyLoading = false;
-  } else {
+  if (!isLazy.includes("not")) {
     results.lazyLoading = true;
+  } else {
+    results.lazyLoading = false;
   }
   if (dataArr[0].green) {
     results.greenHost = true;
   } else {
     results.greenHost = false;
   }
+
   let totalSum =
     results.gridCo2 +
     results.renewCo2 +
@@ -114,7 +141,52 @@ function prepareObject(dataArr) {
   results.try = results.bytes - totalSum;
 
   console.log(results);
+  resultsArr.push(results);
+  resultsReady(results);
+  return results;
 }
+
+// function resultsReady(results) {
+//   document.querySelector("#page1").classList.add("hidden");
+//   document.querySelector("#page2").classList.remove("hidden");
+//   showResults(results);
+// }
+
+// function showResults() {
+//   console.log("res", fixedResults);
+//   document.querySelector("#url-name").textContent = fixedResults.company;
+//   if (fixedResults.cleanerThan > 50) {
+//     document.querySelector("#cleaner-txt").classList.remove("hidden");
+//     document.querySelector("#dirtier-txt").classList.add("hidden");
+//     document.querySelector("#cleaner-nr").textContent = fixedResults.cleanerThan;
+//   } else {
+//     document.querySelector("#dirtier-txt").classList.remove("hidden");
+//     document.querySelector("#cleaner-txt").classList.add("hidden");
+//     document.querySelector("#dirtier-nr").textContent = fixedResults.cleanerThan;
+//   }
+//   document.querySelector("#co2-nr").textContent = fixedResults.gridCo2;
+
+//   if(fixedResults.greenHost) {
+//     document.querySelector("#green-host-container").classList.remove("hidden");
+//     document.querySelector("#red-host-container").classList.add("hidden");
+//   } else {
+//     document.querySelector("#green-host-container").classList.add("hidden");
+//     document.querySelector("#red-host-container").classList.remove("hidden");
+//   }
+// document.querySelector("#weight-nr").textContent = fixedResults.bytes;
+// displayParamsData();
+// }
+
+// function displayParamsData() {
+//   if (fixedResults.greenHost) {
+//     document.querySelector("#green-host").setAttribute("checked", true);
+//     document.querySelector("#host-txt").classList.add("hidden");
+//   } else {
+//     document.querySelector("#host-txt").classList.remove("hidden");
+//   }
+// }
+
+
 
 // function displayResults(dataArr) {
 //   document.querySelector("#co2-nr").textContent = dataArr[0].statistics.co2.grid.grams;

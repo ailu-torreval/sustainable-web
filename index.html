@@ -9,10 +9,10 @@
 </head>
 <header>
   <a href="index.html">
-  <div class="logo">
-    <h4>ADVICE</h4>
-  </div>
-</a>
+    <div class="logo">
+      <h4>ADVICE</h4>
+    </div>
+  </a>
   <ul>
     <li>About Us</li>
     <li>Run the test again</li>
@@ -21,72 +21,78 @@
 
 <body>
   <section id="page1">
-  <h1 class="first-h1"> Green Carbon calculator</h1>
-  <article id="form-container">
-    <h2>Check Your Website</h2>
-    <form action="index.html" method="post" class="contact-form">
-     
-        <label for="comapny-name" class="cia-name">
-          <span class="content-cia">Company Name</span>
-        </label>
-        <input type="text" name="company-name" autocomplete="off" required>
-     
-     
-        <label for="url" class="url">
-          <span class="content-url">Company URL</span>
-        </label>
-        <input type="url" name="url" autocomplete="off" required>
-      
-      
-        <label for="email" class="email">
-          <span class="content-email">E-mail</span>
-        </label>
-        <input type="email" name="email" autocomplete="off" required>
-      
-    
-        <label for="contact-name" class="contact-name">
-          <span class="content-contact">Industry</span>
-        </label>
-        <select name="contact-name" class="select">
-          <option value="Select an Industry">Select an Industry..</option>
-          <option value=" Farming/Food Production Industry">Farming/Food Production Industry</option>
-          <option value="The Financial Transactions Industry">Financial Transactions Industry</option>
-          <option value="Fashion Industry">Fashion Industry</option>
-          <option value="Tech Industry">Tech Industry</option>
-          <option value="Constructions Industry">Constructions Industry</option>
-          <option value="Transportation Industry">Transportation Industry</option>
-          <option value="Culture, Sport and Entertainment Industry">Culture, Sport and Entertainment Industry</option>
-          <option value="Hotel and Restaurant Industry">Hotel and Restaurant Industry</option>
-          <option value="Energy Industry">Energy Industry</option>
-          <option value="Detail Industry">Detail Industry</option>
+    <h1 class="first-h1"> Green Carbon calculator</h1>
+    <article id="form-container">
+      <article id="form">
+        <h2>Check Your Website</h2>
+        <form action="index.html" method="post" class="contact-form">
+          <label for="comapny-name" class="cia-name">
+            <span class="content-cia">Company Name</span>
+          </label>
+          <input type="text" name="companyName" autocomplete="off" required>
+          <label for="url" class="url">
+            Company URL
+          </label>
+          <input type="url" name="url" autocomplete="off" required>
 
-        </select>
 
-      </form>
-      <div class="btn-div">
-      <button class="submit-btn" type="submit">See Results</button>
-    </div>
+          <label for="email" class="email">
+            E-mail
+          </label>
+          <input type="email" name="email" autocomplete="off" required>
+
+
+          <label for="contact-name" class="contact-name">
+            Industry
+          </label>
+          <select name="contact-name" class="select">
+            <option value="Select an Industry">Select an Industry..</option>
+            <option value=" Farming/Food Production Industry">Farming/Food Production Industry</option>
+            <option value="The Financial Transactions Industry">Financial Transactions Industry</option>
+            <option value="Fashion Industry">Fashion Industry</option>
+            <option value="Tech Industry">Tech Industry</option>
+            <option value="Constructions Industry">Constructions Industry</option>
+            <option value="Transportation Industry">Transportation Industry</option>
+            <option value="Culture, Sport and Entertainment Industry">Culture, Sport and Entertainment Industry</option>
+            <option value="Hotel and Restaurant Industry">Hotel and Restaurant Industry</option>
+            <option value="Energy Industry">Energy Industry</option>
+            <option value="Detail Industry">Detail Industry</option>
+
+          </select>
+
+          <div class="btn-div">
+            <button class="submit-btn" type="button">See Results</button>
+          </div>
+        </form>
+      </article>
+      <article id="loading-screen" class="hidden">
+        <div id="loading-graphic">this is a load graphic</div>
+        <h3 id="clean-msg">Here some advice or data about sustainability</h3>
+      </article>
+
     </article>
   </section>
-  <section id="page2">
+  <section id="page2" class="hidden">
     <section id="main">
-      <h1>URL Name</h1>
+      <h1 id="url-name">URL Name</h1>
       <article id="results-card">
         <div id="results-row1">
           <div id="cleaner-graph"></div>
-          <h3 class="" id="cleaner-txt">Nice! This Website is cleaner than <span>75%</span> of the World Wide
+          <h3 class="hidden" id="cleaner-txt">Nice! This Website is cleaner than <span id="cleaner-nr"></span> % of
+            the World Wide
             Web.</h3>
-          <h3 class="hidden" id="dirtier-txt">Oh no! This Website is dirtier than <span>60%</span> of the World
+          <h3 class="hidden" id="dirtier-txt">Oh no! This Website is dirtier than <span id="dirtier-nr"></span> % of
+            the World
             Wide
             Web.</h3>
         </div>
         <div id="results-row2">
-          <h3 id="co2">It produces <span id="co2-nr"></span>g. every time is visited for the first time.</h3>
+          <h3 id="co2">It produces <span id="co2-nr"></span>g. of co2 every time is visited for the first time.</h3>
           <div id="results-host-container">
-            <div class="green-host-container"> 
-            <div id="green-host-graph"></div>
-            <h3 id="green-host-txt">This web is runned using renewable energies.</h3>
-          </div>
+            <div id="green-host-container" class="hidden">
+              <div id="green-host-graph"></div>
+              <h3 id="green-host-txt">This web is runned using renewable energies.</h3>
+            </div>
           </div>
           <div class="hidden" id="red-host-container">
             <div id="red-host-graph"></div>
@@ -95,7 +101,7 @@
         </div>
         <div id="results-row3">
           <div id="weight-graph"></div>
-          <h3 id="weight-txt">This page weighs <span> 2571858 </span>bytes.</h3>
+          <h3 id="weight-txt">This page weighs <span id="weight-nr"> 2571858 </span>bytes.</h3>
         </div>
       </article>
     </section>
@@ -106,7 +112,7 @@
           <div id="img-slider-container">
             <h3 id="img-title">Re-size Images</h3>
             <div class="slidecontainer">
-              <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+              <input type="range" min="1" max="100" value="100" class="slider" id="myRange">
             </div>
           </div>
           <h3 id="img-txt">Changing the image sizes and swapping for more modern image formats can be a huge
@@ -116,23 +122,28 @@
       <article id="checkbox-container">
         <div id="green-host-container">
           <label for="green-host"> Use a Green Host</label>
-          <input type="checkbox" id="green-host" name="green-host" value="green-host">
-          <p>It could lower co2 emmissions by <span>34</span>%</p>
+          <input type="checkbox" id="green-host" name="green-host" value="yes">
+          <p id="host-txt">It could lower co2 emmissions by <span id="host-nr">34</span>%</p>
         </div>
         <div id="lazy-load-container">
           <label for="lazy-loading"> Implement Lazy Loading</label>
           <input type="checkbox" id="lazy-loading" name="lazy-loading" value="lazy-loading">
-          <p>Potential savings of <span>34</span>KiB.</p>
+          <p>Potential savings of <span id="lazy-nr">34</span> bytes.</p>
+        </div>
+        <div id="opt-lazy-loading">
+          <label for="opt-lazy-loading"> Improve Lazy Loading</label>
+          <input type="checkbox" id="opt-lazy-loading" name="opt-lazy-loading" value="opt-lazy-loading">
+          <p>This web uses lazy loading, but it can be optimized by <span id="opt-lazy-nr">34</span>bytes.</p>
         </div>
         <div id="resp-img-container">
           <label for="resp-img-opt"> Use Responsive Images</label>
           <input type="checkbox" id="resp-img-opt" name="resp-img-opt" value="resp-img-opt">
-          <p>Potential savings of <span>34</span>KiB.</p>
+          <p>Potential savings of <span id="resp-nr">34</span> bytes.</p>
         </div>
         <div id="code-container">
           <label for="code-opt"> Code Optimizations</label>
           <input type="checkbox" id="code-opt" name="code-opt" value="code-opt">
-          <p>Potential savings of <span>34</span>KiB.</p>
+          <p>Potential savings of <span id="code-nr">34</span> bytes.</p>
         </div>
 
       </article>
