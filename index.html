@@ -23,42 +23,17 @@
   <section id="page1">
     <h1 class="first-h1"> Green Carbon calculator</h1>
     <article id="form-container">
-      <h2>Check Your Website</h2>
-      <form action="index.html" method="post" class="contact-form">
-
-        <label for="comapny-name" class="cia-name">
-          <span class="content-cia">Company Name</span>
-        </label>
-        <input type="text" name="company-name" autocomplete="off" required>
-
-
-        <label for="url" class="url">
-          <span class="content-url">Company URL</span>
-        </label>
-        <input type="url" name="url" autocomplete="off" required>
-
-
-        <label for="email" class="email">
-          <span class="content-email">E-mail</span>
-        </label>
-        <input type="email" name="email" autocomplete="off" required>
-
-
-        <label for="contact-name" class="contact-name">
-          <span class="content-contact">Industry</span>
-        </label>
-        <select aria-label="contactName" class="select">
-          <option value="Select an Industry">Select an Industry..</option>
-          <option value=" Farming/Food Production Industry">Farming/Food Production Industry</option>
-          <option value="The Financial Transactions Industry">Financial Transactions Industry</option>
-          <option value="Fashion Industry">Fashion Industry</option>
-          <option value="Tech Industry">Tech Industry</option>
-          <option value="Constructions Industry">Constructions Industry</option>
-          <option value="Transportation Industry">Transportation Industry</option>
-          <option value="Culture, Sport and Entertainment Industry">Culture, Sport and Entertainment Industry</option>
-          <option value="Hotel and Restaurant Industry">Hotel and Restaurant Industry</option>
-          <option value="Energy Industry">Energy Industry</option>
-          <option value="Detail Industry">Detail Industry</option>
+      <article id="form">
+        <h2>Check Your Website</h2>
+        <form action="index.html" method="post" class="contact-form">
+          <label for="comapny-name" class="cia-name">
+            <span class="content-cia">Company Name</span>
+          </label>
+          <input type="text" name="companyName" autocomplete="off" required>
+          <label for="url" class="url">
+            Company URL
+          </label>
+          <input type="url" name="url" autocomplete="off" required>
 
 
           <label for="email" class="email">
@@ -70,7 +45,7 @@
           <label for="contact-name" class="contact-name">
             Industry
           </label>
-          <select aria-label="contact-name" class="select">
+          <select name="contact-name" class="select">
             <option value="Select an Industry">Select an Industry..</option>
             <option value=" Farming/Food Production Industry">Farming/Food Production Industry</option>
             <option value="The Financial Transactions Industry">Financial Transactions Industry</option>
@@ -88,12 +63,12 @@
           <div class="btn-div">
             <button class="submit-btn" type="button">See Results</button>
           </div>
-      </form>
-    </article>
-    <article id="loading-screen" class="hidden">
-      <div id="loading-graphic">this is a load graphic</div>
-      <h3 id="clean-msg">Here some advice or data about sustainability</h3>
-    </article>
+        </form>
+      </article>
+      <article id="loading-screen" class="hidden">
+        <div id="loading-graphic">this is a load graphic</div>
+        <h3 id="clean-msg">Here some advice or data about sustainability</h3>
+      </article>
 
     </article>
   </section>
