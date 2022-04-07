@@ -69,9 +69,47 @@
     </article>
 
   </section>
+  <h1 class="url-name">URL Name</h1>
   <section id="page2">
+    <section id="parameters">
+      <h2 id="parameters-title">Change Parameters:</h2>
+      <article id="parameters-card">
+        <div id="params-row1">
+          <div id="img-slider-container">
+            <h3 id="img-title">Re-size Images</h3>
+            <div class="slidecontainer">
+              <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+            </div>
+          </div>
+          <h4 id="img-txt">Changing the image sizes and swapping for more modern image formats can be a huge
+            improvement. </h4>
+        </div>
+      </article>
+      <article id="checkbox-container">
+        <div id="green-host-container">
+          <label for="green-host"> Use a Green Host</label>
+          <input type="checkbox" id="green-host" name="green-host" value="green-host">
+          <p>It could lower co2 emmissions by <span>34</span>%</p>
+        </div>
+        <div id="lazy-load-container">
+          <label for="lazy-loading"> Implement Lazy Loading</label>
+          <input type="checkbox" id="lazy-loading" name="lazy-loading" value="lazy-loading">
+          <p>Potential savings of <span>34</span>KiB.</p>
+        </div>
+        <div id="resp-img-container">
+          <label for="resp-img-opt"> Use Responsive Images</label>
+          <input type="checkbox" id="resp-img-opt" name="resp-img-opt" value="resp-img-opt">
+          <p>Potential savings of <span>34</span>KiB.</p>
+        </div>
+        <div id="code-container">
+          <label for="code-opt"> Code Optimizations</label>
+          <input type="checkbox" id="code-opt" name="code-opt" value="code-opt">
+          <p>Potential savings of <span>34</span>KiB.</p>
+        </div>
+
+      </article>
+    </section>
     <section id="main">
-      <h1>URL Name</h1>
       <article id="results-card">
         <div id="results-row1">
           <div id="cleaner-graph"></div>
@@ -100,44 +138,7 @@
         </div>
       </article>
     </section>
-    <section id="parameters">
-      <h2 id="parameters-title">Change Parameters:</h2>
-      <article id="parameters-card">
-        <div id="params-row1">
-          <div id="img-slider-container">
-            <h3 id="img-title">Re-size Images</h3>
-            <div class="slidecontainer">
-              <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-            </div>
-          </div>
-          <h3 id="img-txt">Changing the image sizes and swapping for more modern image formats can be a huge
-            improvement. </h3>
-        </div>
-      </article>
-      <article id="checkbox-container">
-        <div id="green-host-container">
-          <label for="green-host"> Use a Green Host</label>
-          <input type="checkbox" id="green-host" name="green-host" value="green-host">
-          <p>It could lower co2 emmissions by <span>34</span>%</p>
-        </div>
-        <div id="lazy-load-container">
-          <label for="lazy-loading"> Implement Lazy Loading</label>
-          <input type="checkbox" id="lazy-loading" name="lazy-loading" value="lazy-loading">
-          <p>Potential savings of <span>34</span>KiB.</p>
-        </div>
-        <div id="resp-img-container">
-          <label for="resp-img-opt"> Use Responsive Images</label>
-          <input type="checkbox" id="resp-img-opt" name="resp-img-opt" value="resp-img-opt">
-          <p>Potential savings of <span>34</span>KiB.</p>
-        </div>
-        <div id="code-container">
-          <label for="code-opt"> Code Optimizations</label>
-          <input type="checkbox" id="code-opt" name="code-opt" value="code-opt">
-          <p>Potential savings of <span>34</span>KiB.</p>
-        </div>
-
-      </article>
-    </section>
+    
   </section>
   <script type="module" src="/main.js"></script>
 </body>
