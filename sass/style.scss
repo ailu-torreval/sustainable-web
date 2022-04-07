@@ -9,13 +9,13 @@
 }
 :root{
   --black: #0D0D0D;
-  --dark-green: #242B29;
+  --dark-green: #275850;
   --pink:#F2508B;
-  --dark-pink: #593945;
+  --dark-box: #002518;
   --blue: #716DF2;
   --green: #63F2B0;
   --white: #DCDDDD;
-  --gradient-background: linear-gradient(229deg, rgba(59,37,45,1) 10%, rgba(72,93,87,1) 57%, rgba(36,43,41,1) 71%, rgba(45,32,37,1) 85%);
+  --gradient-background: linear-gradient(146deg, rgba(0,43,34,1) 0%, rgba(0,73,60,1) 40%, rgba(43,104,94,1) 100%);
   --body-font:'Ubuntu', sans-serif;
 
 }
@@ -63,16 +63,26 @@ form{
   grid-template-columns: 1fr 1fr;
   width: 45rem;
   height: 25rem;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(25px);
   border-radius: 5%;
   background-color: var(--dark-green);
+  
+
+
   input{
     width: 20vw;
     height: 2rem;
     border-style: none;
+    border-radius: 6px;
     background-color: transparent;
-    border: 1px solid var(--dark-pink);
+    border: 1px solid var(--dark-box);
   }
+}
+
+select{
+  background-color: #0fa3a0;
+  border-radius: 6px;
+  border: none;
 }
