@@ -1,6 +1,6 @@
 "use strict";
 import "./sass/style.scss";
-document.querySelector("#url-input").addEventListener("input", getUrl);
+// document.querySelector("#url-input").addEventListener("input", getUrl);
 
 let testUrl;
 let dataArr = [];
@@ -121,3 +121,6 @@ function prepareObject(dataArr) {
 // }
 
 //dataArr[1]["unminified-javascript"];
+
+//loading animation
+
