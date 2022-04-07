@@ -9,6 +9,7 @@ let testUrl;
 let dataArr = [];
 let improvNr = [];
 let resultsArr = [];
+let improvNr = 0;
 let fixedResults = {
   company: "infobae",
   mail: "s@s.com",
@@ -271,8 +272,126 @@ function showLoadingText() {
   console.log("now text appears");
 }
 
+function displayParamsData() {
+  if (fixedResults.greenHost) {
+    document.querySelector("#green-host").setAttribute("checked", true);
+    document.querySelector("#host-txt").classList.add("hidden");
+  } else {
+    document.querySelector("#host-txt").classList.remove("hidden");
+  }
+  if (fixedResults.lazyLoading) {
+    document.querySelector("#lazy-load-container").classList.add("hidden");
+    document.querySelector("#opt-lazy-loading").classList.remove("hidden");
+    document.querySelector("#opt-lazy-nr").textContent = fixedResults.lazyImg;
+  } else {
+    document.querySelector("#lazy-load-container").classList.remove("hidden");
+    document.querySelector("#opt-lazy-loading").classList.add("hidden");
+    document.querySelector("#lazy-nr").textContent = fixedResults.lazyImg;
+  }
+  document.querySelector("#resp-nr").textContent = fixedResults.respImg;
+  document.querySelector("#code-nr").textContent = fixedResults.optCode;
+
+  // document.querySelector("#imgRange").addEventListener("chenge", changeSlider);
+  document.querySelector("#green-host").addEventListener("change", (e) => {
+    if (e.target.checked) {
+      console.log("is checked");
+      fixedResults.lazyLoading = true;
+      getNewRes();
+    } else {
+      console.log("is not checked");
+      fixedResults.lazyLoading = false;
+      getNewRes();
+    }
+  });
+  document.querySelector("#lazy-loading").addEventListener("change", (e) => {
+    if (e.target.checked) {
+      console.log("is checked");
+      improvNr = improvNr++ + fixedResults.lazyImg;
+      getNewRes();
+    } else {
+      console.log("is not checked");
+      improvNr = improvNr-- - fixedResults.lazyImg;
+      getNewRes();
+    }
+  });
+  document
+    .querySelector("#opt-lazy-loading")
+    .addEventListener("change", (e) => {
+      if (e.target.checked) {
+        // improvNr.push(fixedResults.lazyImg);
+        improvNr = improvNr++ + fixedResults.lazyImg;
+        console.log(improvNr);
+        getNewRes();
+      } else {
+        console.log("is not checked");
+        improvNr = improvNr-- - fixedResults.lazyImg;
+        getNewRes();
+      }
+    });
+
+  document.querySelector("#resp-img-opt").addEventListener("change", (e) => {
+    if (e.target.checked) {
+      console.log("is checked");
+      improvNr = improvNr++ + fixedResults.respImg;
+      getNewRes();
+      console.log(improvNr);
+    } else {
+      improvNr = improvNr-- - fixedResults.respImg;
+      console.log("is not checked");
+      getNewRes();
+    }
+  });
+
+  document.querySelector("#code-opt").addEventListener("change", (e) => {
+    if (e.target.checked) {
+      console.log("is checked");
+      improvNr = improvNr++ + fixedResults.optCode;
+      getNewRes();
+    } else {
+      console.log("is not checked");
+      improvNr = improvNr-- - fixedResults.optCode;
+
+      getNewRes();
+    }
+  });
+
+  // document
+  //   .querySelector("#opt-lazy-loading")
+  //   .addEventListener("chenge", changeOptLazy);
+  // document
+  //   .querySelector("#resp-img-opt")
+  //   .addEventListener("chenge", changeRespImg);
+  // document.querySelector("#code-opt").addEventListener("chenge", changeCode);
+}
+
+async function getNewRes() {
+  // fetch("https://kea-alt-del.dk/websitecarbon//data?bytes=415249&green=1")
+  //   .then((res) => res.json())
+
+  //   .then(gotData);
+
+  // function gotData(bags) {
+  //   console.log(bags);
+  // }
+
+  //   const url1 = `https://kea-alt-del.dk/websitecarbon//data?bytes=415249&green=1`;
+
+  //   const speedData1 = await fetch(
+  //     `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&key=${key}`
+  //   );
+  //   const speedData = await speedData1.json();
+
+  const carbonData2 = await fetch(
+    "https://kea-alt-del.dk/websitecarbon//data?bytes=415249&green=1"
+  );
+  const carbonData3 = await carbonData2.json();
+  //   // when loaded, prepare data objects
+  //   prepareObjects(speedData, carbonData);}
+  console.log(carbonData3);
+}
 function showText() {
   document.querySelector(".first-h3").classList.remove("hidden");
+
 }
 
 function showSecText() {
