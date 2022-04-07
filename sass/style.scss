@@ -85,9 +85,7 @@ header {
   .hidden {
     display: none;
   }
-  .url-name {
-    text-align: center;
-  }
+
   #page1 {
     display: flex;
     flex-direction: column;
@@ -175,12 +173,15 @@ select {
   font-size: 1rem;
 }
 #main {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 40% 60%;
   gap:2rem;
   h1 {
-    text-align: center;
     margin-block-end: 2rem;
+      text-align: center;
+      grid-column: 1/3;
+
+
   }
 }
 
@@ -277,13 +278,12 @@ select {
 }
 
 #cleaner-graph,
-#green-host-graph,
-#red-host-graph,
-#weight-graph {
+#red-host-graph{
   height: 200px;
   width: 200px;
   background-color: white;
 }
+
 #cleaner-txt,
 #dirtier-txt,
 #green-host-txt,
@@ -296,7 +296,9 @@ select {
   align-items: center;
   gap: 1rem;
 }
-
+.weight-img{
+  max-width: 120px;
+}
 //button
 .draw-border {
   // box-shadow: inset 0 0 0 2px #63bf95;
