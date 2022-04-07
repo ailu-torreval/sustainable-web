@@ -24,8 +24,10 @@
     <h1 class="first-h1"> Green Carbon calculator</h1>
     <article id="form-container">
       <article id="form">
+
         <h2>Check Your Website</h2>
         <form action="index.html" method="post" class="contact-form">
+
           <label for="comapny-name" class="cia-name">
             <span class="content-cia">Company Name</span>
           </label>
@@ -61,19 +63,32 @@
 
           </select>
 
+
+
           <div class="btn-div">
-            <button class="submit-btn" type="button">See Results</button>
+            <button class="submit-btn draw-border" type="button">See Results</button>
           </div>
         </form>
       </article>
-      <article id="loading-screen" class="hidden">
+
+      <!-- <article id="loading-screen" class="hidden">
         <div id="loading-graphic">this is a load graphic</div>
         <h3 id="clean-msg">Here some advice or data about sustainability</h3>
-      </article>
+      </article> -->
+
 
     </article>
+    <div class="loading-container">
+      <div id="loading-wrapper" class="hidden">
+        <div id="loading-text">LOADING</div>
+        <div id="loading-content"></div>
+        <h3 class=" first-h3 hidden">mela</h3>
+        <h3 class="sec-h3 hidden">ailin</h3>
+        <h3 class="third-h3 hidden">marina</h3>
+      </div>
+    </div>
   </section>
-  <section id="page2" class="hidden">
+  <section id="page2">
     <section id="main">
       <h1 id="url-name">URL Name</h1>
       <section id="parameters">
@@ -83,7 +98,9 @@
             <div id="img-slider-container">
               <h3 id="img-title">Re-size Images</h3>
               <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="100" class="slider" id="imgRange">
+
+                <input type="range" min="1" max="100" value="100" id="imgRange">
+
               </div>
             </div>
             <h3 id="img-txt">Changing the image sizes and swapping for more modern image formats can be a huge
@@ -92,28 +109,68 @@
         </article>
         <article id="checkbox-container">
           <div id="green-host-container">
+
+            <div class="middle">
             <label for="green-host"> Use a Green Host</label>
-            <input type="checkbox" id="green-host" name="green-host" value="yes">
-            <p id="host-txt">It could lower co2 emmissions by <span id="host-nr">34</span>%</p>
+             <label class="switch">
+              <input type="checkbox" class="slide" id="green-host" name="green-host" value="yes">
+              <span class="slider round"> </span>
+            </label>
+
+            </div>
+
+          <p id="host-txt">It could lower co2 emmissions by <span id="host-nr">34</span>%</p>
           </div>
+
           <div id="lazy-load-container">
+            <div class="middle">
             <label for="lazy-loading"> Implement Lazy Loading</label>
+
             <input type="checkbox" id="lazy-loading" name="lazy-loading" value="lazy-loading" >
             <p>Potential savings of <span id="lazy-nr">34</span> bytes.</p>
           </div>
           <div id="opt-lazy-container">
+
+            <label class="switch">
+              <input type="checkbox" class="slide" id="lazy-loading" name="lazy-loading" value="lazy-loading">
+              <span class="slider round"> </span>
+            </label>
+            </div>
+
+            <p>Potential savings of <span id="lazy-nr">34</span> bytes.</p>
+          </div>
+          <div id="opt-lazy-loading">
+            <div class="middle">
+
             <label for="opt-lazy-loading"> Improve Lazy Loading</label>
-            <input type="checkbox" id="opt-lazy-loading" name="opt-lazy-loading" value="opt-lazy-loading">
-            <p>This web uses lazy loading, but it can be optimized by <span id="opt-lazy-nr">34</span>bytes.</p>
+            <label class="switch">
+              <input type="checkbox" class="slide" id="opt-lazy-loading" name="opt-lazy-loading" value="opt-lazy-loading">
+              <span class="slider round"> </span>
+            </label>
+            </div>
+            
+            <p>This web uses lazy loading, but it can be optimized by <span id="opt-lazy-nr">34</span> bytes.</p>
           </div>
           <div id="resp-img-container">
+            <div class="middle">
             <label for="resp-img-opt"> Use Responsive Images</label>
-            <input type="checkbox" id="resp-img-opt" name="resp-img-opt" value="resp-img-opt">
+            <label class="switch">
+              <input type="checkbox" class="slide" id="resp-img-opt" name="resp-img-opt" value="resp-img-opt">
+              <span class="slider round"> </span>
+            </label>
+</div>
+          
             <p>Potential savings of <span id="resp-nr">34</span> bytes.</p>
           </div>
           <div id="code-container">
+            <div class="middle">
             <label for="code-opt"> Code Optimizations</label>
-            <input type="checkbox" id="code-opt" name="code-opt" value="code-opt">
+            <label class="switch">
+              <input type="checkbox" class="slide" id="code-opt" name="code-opt" value="code-opt">
+              <span class="slider round"> </span>
+            </label>
+            </div>
+            
             <p>Potential savings of <span id="code-nr">34</span> bytes.</p>
           </div>
 
@@ -122,7 +179,27 @@
       </section>
       <article id="results-card">
         <div id="results-row1">
-          <div id="cleaner-graph"></div>
+          <div id="cleaner-graph">
+            <svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 338 188">
+              <defs>
+
+                <linearGradient id="barometer" y1="86" x2="338" y2="86" gradientUnits="userSpaceOnUse">
+                  <stop offset="0.10855" stop-color="#9a3d37" />
+                  <stop offset="0.26755" stop-color="#c68736" />
+                  <stop offset="0.35322" stop-color="#dbaa35" />
+                  <!-- <stop offset="0.58524" stop-color="#dbaa35" />
+                <stop offset="0.64244" stop-color="#c6a236" />
+                <stop offset="0.75998" stop-color="#908c38" />
+                <stop offset="0.81278" stop-color="#768239" /> -->
+                </linearGradient>
+              </defs>
+              <path class="cls-1"
+                d="M169,0c92.54639,0,167.48779,75.6134,168.97739,169.15979L338,172H278c0-61.99762-48.946-112-109-112C109.5466,60,60.98,109.00739,60.01465,170.14368L60,172H0C0,77.14868,75.51881,0,169,0Z" />
+              <path id="tick" class="cls-2"
+                d="M169,14Q152.98634,162.754,153,171.72691a16.00191,16.00191,0,1,0,32,.05066Q184.98618,162.80475,169,14Zm.0155,168A10,10,0,1,1,179,172.0156,10.03774,10.03774,0,0,1,169.01551,182Z" />
+            </svg>
+          </div>
           <h3 class="hidden" id="cleaner-txt">Nice! This Website is cleaner than <span id="cleaner-nr"></span> % of
             the World Wide
             Web.</h3>
@@ -135,7 +212,8 @@
           <h3 id="co2">It produces <span id="co2-nr"></span>g. of co2 every time is visited for the first time.</h3>
           <div id="results-host-container">
             <div id="green-host-container" class="">
-              <div id="green-host-graph"></div>
+              <div id="green-host-graph">
+                <img class="weight-img" src="checked1.svg" alt="illustration scale"></div>
               <h3 id="green-host-txt">This web is runned using renewable energies.</h3>
             </div>
           </div>
@@ -145,7 +223,9 @@
           </div>
         </div>
         <div id="results-row3">
-          <div id="weight-graph"></div>
+          <div id="weight-graph">
+            <img class="weight-img" src="scale1.svg" alt="illustration scale">
+          </div>
           <h3 id="weight-txt">This page weighs <span id="weight-nr"> 2571858 </span>bytes.</h3>
         </div>
       </article>
