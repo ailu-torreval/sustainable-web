@@ -23,15 +23,16 @@
   );
   --green: #3da981;
   --green-two: #15cdcb;
-  --glass: rgba(15, 149, 138, 0.3);
+  --glass: rgba(85, 99, 88, 0.23);
 
   --white: #dcdddd;
   --gradient-background: linear-gradient(
-    146deg,
-    rgba(4, 38, 1, 1) 0%,
-    rgba(4, 4, 4, 1) 54%,
-    rgba(54, 2, 32, 1) 100%
+    144deg,
+    rgba(2, 54, 41, 1) 0%,
+    rgba(31, 31, 31, 1) 43%,
+    rgba(52, 1, 23, 1) 94%
   );
+
   --body-font: "Ubuntu", sans-serif;
 }
 body {
@@ -87,6 +88,14 @@ form {
     background-color: transparent;
     border: 0.6px solid rgb(184, 184, 184);
   }
+  input:focus {
+    outline: none;
+    border: 1px solid #63bf95;
+  }
+  // input:invalid:not(:placeholder-shown, :focus) {
+  //   outline: none;
+  //   border: 1px solid #cc0056;
+  // }
 }
 #form-container {
   // box-shadow: 1px 1px 9px var(--black);
@@ -98,9 +107,9 @@ form {
   // border-radius: 10px;
   background-color: var(--glass);
 
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(15.5px);
-  -webkit-backdrop-filter: blur(15.5px);
+  // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(21px) saturate(131%);
+  -webkit-backdrop-filter: blur(21px) saturate(131%);
   border-radius: 10px;
 
   h2 {
@@ -113,7 +122,7 @@ form {
   }
 }
 select {
-  background-color: #046652;
+  background-color: #343d3b;
   padding: 0.5rem;
   border-style: none;
   outline-style: none;
@@ -153,7 +162,7 @@ select {
   padding: 1.5rem;
 
   background-color: var(--glass);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(15.5px);
   -webkit-backdrop-filter: blur(15.5px);
   border-radius: 10px;
@@ -189,10 +198,11 @@ select {
 
 //button
 .draw-border {
-  box-shadow: inset 0 0 0 2px var(--dark-blue);
-  color: var(--dark-blue);
+  // box-shadow: inset 0 0 0 2px #63bf95;
+  color: #63bf95;
   transition: color 0.25s 0.0833333333s;
   position: relative;
+  outline-style: none;
 }
 .draw-border::before,
 .draw-border::after {
@@ -207,12 +217,12 @@ select {
   right: 0;
 }
 .draw-border::before {
-  border-bottom-width: 2px;
-  border-left-width: 2px;
+  border-bottom-width: 3px;
+  border-left-width: 3px;
 }
 .draw-border::after {
-  border-top-width: 2px;
-  border-right-width: 2px;
+  border-top-width: 3px;
+  border-right-width: 3px;
 }
 .draw-border:hover {
   color: var(--dark-green);
@@ -220,7 +230,7 @@ select {
 }
 .draw-border:hover::before,
 .draw-border:hover::after {
-  border-color: var(--dark-green);
+  border-color: #1d3f2f;
   transition: border-color 0s, width 0.25s, height 0.25s;
   width: 100%;
   height: 100%;
@@ -234,30 +244,13 @@ select {
 }
 
 .submit-btn {
-  background: var(--dark-blue);
+  background: #63bf95;
   color: var(--box-green);
   border: none;
   cursor: pointer;
+  font-weight: 800;
   line-height: 1.5;
-  padding: 0.5em 2em;
+  padding: 0.4em 2em;
   letter-spacing: 0.05rem;
+  outline-style: none;
 }
-.submit-btn:focus {
-  outline: 2px dotted var(--dark-blue);
-  border-radius: 5px;
-}
-
-// .submit-btn {
-//   display: inline-block;
-//   padding: 0.5rem 2rem;
-//   margin-top: 1rem;
-//   text-align: center;
-//   text-decoration: none;
-//   cursor: pointer;
-//   background-color: var(--dark-blue);
-//   color: var(--box-green);
-//   border: none;
-//   border-radius: 5px;
-//   font-family: var(--body-font);
-//   font-size: 1rem;
-// }
