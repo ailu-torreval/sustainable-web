@@ -116,6 +116,15 @@ form {
   //   outline: none;
   //   border: 1px solid #cc0056;
   // }
+
+  .url-invalid, .email-invalid {
+    grid-column: 2;
+    display: none;
+  }
+  .text-invalid{
+    font-size: 0.8rem;
+    color: #d33558;
+  }
 }
 
 #form-container {
