@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Ubuntu:wght@300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 * {
   box-sizing: border-box;
@@ -173,24 +173,23 @@ select {
 
 //parameters styling
 #parameters {
-  max-width: 50vh;
+  max-width: 60vh;
   // box-shadow: 1px 1px 9px var(--green);
   margin-top: 2rem;
   border-radius: 10px;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
   background-color: var(--glass);
+}
+#parameters-title{
+  margin-block-end: 1.5rem;
 }
 #params-row1 {
   display: flex;
-
   flex-direction: column;
-
-  border-bottom: 1px solid var(--glass);
-
-  padding-bottom: 2rem;
+  border-bottom: 1px solid #80808055;
+  padding-bottom: 1.5rem;
 }
 
 input[type="range"] {
@@ -207,14 +206,15 @@ input[type="range"] {
 
 #img-txt {
   font-size: 1rem;
-  line-height: 1.75rem;
   font-style: italic;
+  color:rgb(184, 184, 184);
+  
 }
 
 #checkbox-container {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  // gap: 3rem;
 }
 
 .middle {
@@ -228,7 +228,9 @@ input[type="range"] {
 #opt-lazy-nr,
 #resp-nr,
 #code-nr {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-style: normal;
 }
 
 //results styling
@@ -253,7 +255,7 @@ input[type="range"] {
   align-items: center;
 }
 #results-row1 {
-  border-bottom: 1px solid var(--green);
+  border-bottom: 1px solid #80808055;
   margin-block-end: 1rem;
   padding-block-end: 1rem;
 }
@@ -271,14 +273,37 @@ input[type="range"] {
 #red-host-txt {
   max-width: 25vw;
 }
-.green-host-container {
+#green-host-container, #lazy-load-container, #opt-lazy-loading, #resp-img-container{
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1rem;
+  flex-direction: column;
+  justify-content: space-around;
+  // align-items: center;
+  border-bottom: 1px solid #80808055;
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
+  
+}
+#code-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  // align-items: center;
+
+  padding-top: 1.5rem;
 }
 .weight-img {
   max-width: 120px;
+}
+.par-text{
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 2rem;
+}
+.p-style{
+  margin-block-start: 0.5rem;
+  color: #b8b8b8;
+  max-width: 18vw;
+  
 }
 //button
 .draw-border {
