@@ -12,6 +12,8 @@ let dataArr = [];
 let resultsArr = [];
 let improvNr = 0;
 
+
+
 let fixedResults = {
   company: "infobae",
   mail: "s@s.com",
@@ -318,3 +320,32 @@ function showThirdText() {
   document.querySelector(".sec-h3").classList.add("hidden");
   setTimeout(loop, 2000);
 }
+
+
+
+
+
+
+
+
+
+
+
+const fadingIn = [
+  { opacity: 0 },
+  { opacity: 1 }
+];
+
+
+
+const fadingOut = [
+  { opacity: 1 },
+  { opacity: 0 }
+];
+
+
+let element = document.querySelector('#page1');
+element.animate(fadingIn, 1000);
+
+
+
