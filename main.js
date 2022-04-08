@@ -273,31 +273,16 @@ function displayParamsData(results) {
   // document.querySelector("#code-opt").addEventListener("chenge", changeCode);
 }
 
-// async function getNewRes() {
-//   // fetch("https://kea-alt-del.dk/websitecarbon//data?bytes=415249&green=1")
-//   //   .then((res) => res.json())
+function getNewRes() {
+  fetch("https://kea-alt-del.dk/websitecarbon/data/?bytes=415249&green=1")
+    .then((res) => res.json())
 
-//   //   .then(gotData);
+    .then(gotData);
 
-//   // function gotData(bags) {
-//   //   console.log(bags);
-//   // }
-
-//   //   const url1 = `https://kea-alt-del.dk/websitecarbon//data?bytes=415249&green=1`;
-
-//   //   const speedData1 = await fetch(
-//   //     `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&key=${key}`
-//   //   );
-//   //   const speedData = await speedData1.json();
-
-//   const carbonData2 = await fetch(
-//     "https://kea-alt-del.dk/websitecarbon//data?bytes=415249&green=1"
-//   );
-//   const carbonData3 = await carbonData2.json();
-//   //   // when loaded, prepare data objects
-//   //   prepareObjects(speedData, carbonData);}
-//   console.log(carbonData3);
-// }
+  function gotData(bags) {
+    console.log("bagS", bags);
+  }
+}
 
 // dataArr[1]["unminified-javascript"];
 
