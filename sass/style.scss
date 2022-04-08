@@ -44,6 +44,15 @@ body {
   }
 }
 
+
+h3{
+  font-weight: 400;
+}
+
+h4{
+  font-weight: 400;
+}
+
 header {
   display: flex;
   flex-direction: row;
@@ -464,8 +473,8 @@ input[type="range"] {
 #loading-text {
   display: block;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 49%;
+  left: 49%;
   color: #999;
   width: 100px;
   height: 30px;
@@ -478,8 +487,8 @@ input[type="range"] {
 #loading-content {
   display: block;
   position: relative;
-  left: 50%;
-  top: 50%;
+  left: 49%;
+  top: 49%;
   width: 170px;
   height: 170px;
   margin: -85px 0 0 -85px;
@@ -566,12 +575,12 @@ input[type="range"] {
 .loading-container .first-h3 {
   display: block;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 75%;
+  left: 49%;
+  transform: translate(-50%, -50%);
   color: var(--white);
   width: 60vw;
   height: auto;
-  margin: 100px 0 0 -45px;
   text-align: center;
   font-family: var(--body-font);
   font-size: 20px;
@@ -580,12 +589,12 @@ input[type="range"] {
 .loading-container .sec-h3 {
   display: block;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 75%;
+  left: 49%;
+  transform: translate(-50%, -50%);
   color: var(--white);
-  width: 60vw;
+  width: 50vw;
   height: auto;
-  margin: 100px 0 0 -45px;
   text-align: center;
   font-family: var(--body-font);
   font-size: 20px;
@@ -594,15 +603,16 @@ input[type="range"] {
 .loading-container .third-h3 {
   display: block;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 75%;
+  left: 49%;
+  transform: translate(-50%, -50%);
   color: var(--white);
-  width: 60vw;
+  width: 50vw;
   height: auto;
-  margin: 100px 0 0 -45px;
   text-align: center;
   font-family: var(--body-font);
   font-size: 20px;
+ 
 }
 
 //graph

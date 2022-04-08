@@ -292,13 +292,19 @@ function getNewRes() {
 
 function showLoadingText() {
   setTimeout(showText, 1000);
-  setTimeout(showSecText, 2000);
-  setTimeout(showThirdText, 3000);
+  setTimeout(showSecText, 4000);
+  setTimeout(showThirdText, 8000);
   console.log("now text appears");
+
+}
+
+function loop() {
+  showLoadingText()
 }
 
 function showText() {
   document.querySelector(".first-h3").classList.remove("hidden");
+  document.querySelector(".third-h3").classList.add("hidden");
 }
 
 function showSecText() {
@@ -310,4 +316,6 @@ function showThirdText() {
   document.querySelector(".third-h3").classList.remove("hidden");
   document.querySelector(".first-h3").classList.add("hidden");
   document.querySelector(".sec-h3").classList.add("hidden");
+  setTimeout(loop, 2000);
 }
+
