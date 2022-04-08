@@ -162,11 +162,15 @@ function showResults(results) {
   if (results.cleanerThan > 50) {
     document.querySelector("#cleaner-txt").classList.remove("hidden");
     document.querySelector("#dirtier-txt").classList.add("hidden");
-    document.querySelector("#cleaner-nr").textContent = results.cleanerThan;
+    document.querySelector(
+      "#cleaner-nr"
+    ).textContent = `${results.cleanerThan}%-`;
   } else {
     document.querySelector("#dirtier-txt").classList.remove("hidden");
     document.querySelector("#cleaner-txt").classList.add("hidden");
-    document.querySelector("#dirtier-nr").textContent = results.cleanerThan;
+    document.querySelector("#dirtier-nr").textContent = `${
+      100 - results.cleanerThan
+    }%`;
   }
   document.querySelector("#co2-nr").textContent = results.gridCo2;
 
@@ -295,11 +299,10 @@ function showLoadingText() {
   setTimeout(showSecText, 4000);
   setTimeout(showThirdText, 8000);
   console.log("now text appears");
-
 }
 
 function loop() {
-  showLoadingText()
+  showLoadingText();
 }
 
 function showText() {
@@ -318,4 +321,3 @@ function showThirdText() {
   document.querySelector(".sec-h3").classList.add("hidden");
   setTimeout(loop, 2000);
 }
-
