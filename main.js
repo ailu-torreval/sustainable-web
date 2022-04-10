@@ -94,26 +94,27 @@ function prepareObject(dataArr) {
   results.mail = form.elements.email.value;
   results.companyUrl = testUrl;
 
-  results.bytes = dataArr[0].bytes;
+  results.bytes = numeral(dataArr[0].bytes).format("0,0");
 
   let percentage = dataArr[0].cleanerThan;
   results.cleanerThan = percentage * 100;
 
   let coGrid = parseFloat(dataArr[0].statistics.co2.grid.grams).toFixed(4);
-  results.gridCo2 = Number(coGrid);
+  results.gridCo2 = Number(numeral(coGrid).format("0,0.000"));
 
   let coRen = parseFloat(dataArr[0].statistics.co2.renewable.grams).toFixed(4);
-  results.renewCo2 = Number(coRen);
-  results.lazyImg = dataArr[1]["offscreen-images"].details.overallSavingsBytes;
-  results.respImg =
-    dataArr[1]["uses-responsive-images"].details.overallSavingsBytes;
+  results.renewCo2 = Number(numeral(coRen).format("0,0.000"));
+  let lazyNr = dataArr[1]["offscreen-images"].details.overallSavingsBytes;
+  results.lazyImg = numeral(lazyNr).format("0,0");
+  let respNr = dataArr[1]["uses-responsive-images"].details.overallSavingsBytes;
+  results.respImg = numeral(respNr).format("0,0");
 
   // img optimizations
   let imgData1 = dataArr[1]["modern-image-formats"].details.overallSavingsBytes;
   let imgData2 =
     dataArr[1]["uses-optimized-images"].details.overallSavingsBytes;
-
-  results.optImg = Math.round(imgData1 + imgData2);
+  let imgDataNr = Math.round(imgData1 + imgData2);
+  results.optImg = numeral(imgDataNr).format("0,0");
 
   // code optimizations
   let codeData1 = dataArr[1]["unminified-css"].details.overallSavingsBytes;
@@ -121,7 +122,9 @@ function prepareObject(dataArr) {
     dataArr[1]["unminified-javascript"].details.overallSavingsBytes;
   let codeData3 = dataArr[1]["unused-css-rules"].details.overallSavingsBytes;
   let codeData4 = dataArr[1]["unused-javascript"].details.overallSavingsBytes;
-  results.optCode = codeData1 + codeData2 + codeData3 + codeData4;
+  results.optCode = numeral(
+    codeData1 + codeData2 + codeData3 + codeData4
+  ).format("0,0");
 
   let isLazy = dataArr[1]["lcp-lazy-loaded"].title;
   if (!isLazy.includes("not")) {
@@ -189,9 +192,6 @@ function showResults(results) {
 function displayParamsData(results) {
   if (results.greenHost) {
     document.querySelector("#green-host").setAttribute("checked", true);
-    document.querySelector("#host-txt").classList.add("hidden");
-  } else {
-    document.querySelector("#host-txt").classList.remove("hidden");
   }
   if (results.lazyLoading) {
     document.querySelector("#lazy-load-container").classList.add("hidden");
@@ -323,27 +323,12 @@ function showThirdText() {
   setTimeout(loop, 2000);
 }
 
+const fadingIn = [{ opacity: 0 }, { opacity: 1 }];
 
+const fadingOut = [{ opacity: 1 }, { opacity: 0 }];
 
-
-
-
-
-
-
-const fadingIn = [
-  { opacity: 0 },
-  { opacity: 1 }
-];
-
-
-
-const fadingOut = [
-  { opacity: 1 },
-  { opacity: 0 }
-];
-
-
-let element = document.querySelector('#page1');
+let element = document.querySelector("#page1");
 element.animate(fadingIn, 1000);
 
+var string = numeral(123456789).format("0,0");
+console.log("nr", string);
