@@ -11,6 +11,7 @@ let testUrl;
 let dataArr = [];
 let resultsArr = [];
 let improvNr = 0;
+let newBytes = 0;
 
 let fixedResults = {
   company: "infobae",
@@ -41,7 +42,7 @@ const Results = {
   respImg: "",
   optImg: "",
   optCode: "",
-  try: [],
+  hostNr: "",
   greenHost: false,
   lazyLoading: false,
 };
@@ -94,27 +95,26 @@ function prepareObject(dataArr) {
   results.mail = form.elements.email.value;
   results.companyUrl = testUrl;
 
-  results.bytes = numeral(dataArr[0].bytes).format("0,0");
+  results.bytes = dataArr[0].bytes;
 
   let percentage = dataArr[0].cleanerThan;
   results.cleanerThan = percentage * 100;
 
   let coGrid = parseFloat(dataArr[0].statistics.co2.grid.grams).toFixed(4);
-  results.gridCo2 = Number(numeral(coGrid).format("0,0.000"));
+  results.gridCo2 = Number(coGrid);
 
   let coRen = parseFloat(dataArr[0].statistics.co2.renewable.grams).toFixed(4);
-  results.renewCo2 = Number(numeral(coRen).format("0,0.000"));
-  let lazyNr = dataArr[1]["offscreen-images"].details.overallSavingsBytes;
-  results.lazyImg = numeral(lazyNr).format("0,0");
-  let respNr = dataArr[1]["uses-responsive-images"].details.overallSavingsBytes;
-  results.respImg = numeral(respNr).format("0,0");
+  results.renewCo2 = Number(coRen);
+  results.lazyImg = dataArr[1]["offscreen-images"].details.overallSavingsBytes;
+  results.respImg =
+    dataArr[1]["uses-responsive-images"].details.overallSavingsBytes;
 
   // img optimizations
   let imgData1 = dataArr[1]["modern-image-formats"].details.overallSavingsBytes;
   let imgData2 =
     dataArr[1]["uses-optimized-images"].details.overallSavingsBytes;
-  let imgDataNr = Math.round(imgData1 + imgData2);
-  results.optImg = numeral(imgDataNr).format("0,0");
+
+  results.optImg = Math.round(imgData1 + imgData2);
 
   // code optimizations
   let codeData1 = dataArr[1]["unminified-css"].details.overallSavingsBytes;
@@ -122,9 +122,7 @@ function prepareObject(dataArr) {
     dataArr[1]["unminified-javascript"].details.overallSavingsBytes;
   let codeData3 = dataArr[1]["unused-css-rules"].details.overallSavingsBytes;
   let codeData4 = dataArr[1]["unused-javascript"].details.overallSavingsBytes;
-  results.optCode = numeral(
-    codeData1 + codeData2 + codeData3 + codeData4
-  ).format("0,0");
+  results.optCode = codeData1 + codeData2 + codeData3 + codeData4;
 
   let isLazy = dataArr[1]["lcp-lazy-loaded"].title;
   if (!isLazy.includes("not")) {
@@ -134,18 +132,20 @@ function prepareObject(dataArr) {
   }
   if (dataArr[0].green) {
     results.greenHost = true;
+    results.hostNr = 1;
   } else {
     results.greenHost = false;
+    results.hostNr = 0;
   }
 
-  let totalSum =
-    results.gridCo2 +
-    results.renewCo2 +
-    results.lazyImg +
-    results.respImg +
-    results.optImg +
-    results.optCode;
-  results.try = results.bytes - totalSum;
+  // let totalSum =
+  //   results.gridCo2 +
+  //   results.renewCo2 +
+  //   results.lazyImg +
+  //   results.respImg +
+  //   results.optImg +
+  //   results.optCode;
+  // results.try = results.bytes - totalSum;
 
   console.log(results);
   resultsArr.push(results);
@@ -168,7 +168,7 @@ function showResults(results) {
     document.querySelector("#dirtier-txt").classList.add("hidden");
     document.querySelector(
       "#cleaner-nr"
-    ).textContent = `${results.cleanerThan}%-`;
+    ).textContent = `${results.cleanerThan}%`;
   } else {
     document.querySelector("#dirtier-txt").classList.remove("hidden");
     document.querySelector("#cleaner-txt").classList.add("hidden");
@@ -176,7 +176,9 @@ function showResults(results) {
       100 - results.cleanerThan
     }%`;
   }
-  document.querySelector("#co2-nr").textContent = results.gridCo2;
+  document.querySelector("#co2-nr").textContent = numeral(
+    results.gridCo2
+  ).format("0,0.000");
 
   if (results.greenHost) {
     document.querySelector("#green-host-container").classList.remove("hidden");
@@ -185,7 +187,9 @@ function showResults(results) {
     document.querySelector("#green-host-container").classList.add("hidden");
     document.querySelector("#red-host-container").classList.remove("hidden");
   }
-  document.querySelector("#weight-nr").textContent = results.bytes;
+  document.querySelector("#weight-nr").textContent = numeral(
+    results.bytes
+  ).format("0,0");
   displayParamsData(results);
 }
 
@@ -196,36 +200,44 @@ function displayParamsData(results) {
   if (results.lazyLoading) {
     document.querySelector("#lazy-load-container").classList.add("hidden");
     document.querySelector("#opt-lazy-loading").classList.remove("hidden");
-    document.querySelector("#opt-lazy-nr").textContent = results.lazyImg;
+    document.querySelector("#opt-lazy-nr").textContent = numeral(
+      results.lazyImg
+    ).format("0,0");
   } else {
     document.querySelector("#lazy-load-container").classList.remove("hidden");
     document.querySelector("#opt-lazy-loading").classList.add("hidden");
-    document.querySelector("#lazy-nr").textContent = results.lazyImg;
+    document.querySelector("#lazy-nr").textContent = numeral(
+      results.lazyImg
+    ).format("0,0");
   }
-  document.querySelector("#resp-nr").textContent = results.respImg;
-  document.querySelector("#code-nr").textContent = results.optCode;
+  document.querySelector("#resp-nr").textContent = numeral(
+    results.respImg
+  ).format("0,0");
+  document.querySelector("#code-nr").textContent = numeral(
+    results.optCode
+  ).format("0,0");
 
   // document.querySelector("#imgRange").addEventListener("chenge", changeSlider);
   document.querySelector("#green-host").addEventListener("change", (e) => {
     if (e.target.checked) {
       console.log("is checked");
-      results.lazyLoading = true;
-      getNewRes();
+      results.greenHost = true;
+      getNewRes(results);
     } else {
       console.log("is not checked");
-      results.lazyLoading = false;
-      getNewRes();
+      results.greenHost = false;
+      getNewRes(results);
     }
   });
   document.querySelector("#lazy-loading").addEventListener("change", (e) => {
     if (e.target.checked) {
       console.log("is checked");
       improvNr = improvNr++ + results.lazyImg;
-      getNewRes();
+      getNewRes(results);
     } else {
       console.log("is not checked");
       improvNr = improvNr-- - results.lazyImg;
-      getNewRes();
+      getNewRes(results);
     }
   });
   document
@@ -235,11 +247,11 @@ function displayParamsData(results) {
         // improvNr.push(fixedResults.lazyImg);
         improvNr = improvNr++ + results.lazyImg;
         console.log(improvNr);
-        getNewRes();
+        getNewRes(results);
       } else {
         console.log("is not checked");
         improvNr = improvNr-- - results.lazyImg;
-        getNewRes();
+        getNewRes(results);
       }
     });
 
@@ -247,12 +259,12 @@ function displayParamsData(results) {
     if (e.target.checked) {
       console.log("is checked");
       improvNr = improvNr++ + results.respImg;
-      getNewRes();
+      getNewRes(results);
       console.log(improvNr);
     } else {
       improvNr = improvNr-- - results.respImg;
       console.log("is not checked");
-      getNewRes();
+      getNewRes(results);
     }
   });
 
@@ -260,12 +272,12 @@ function displayParamsData(results) {
     if (e.target.checked) {
       console.log("is checked");
       improvNr = improvNr++ + results.optCode;
-      getNewRes();
+      getNewRes(results);
     } else {
       console.log("is not checked");
       improvNr = improvNr-- - results.optCode;
 
-      getNewRes();
+      getNewRes(results);
     }
   });
 
@@ -278,14 +290,58 @@ function displayParamsData(results) {
   // document.querySelector("#code-opt").addEventListener("chenge", changeCode);
 }
 
-function getNewRes() {
-  fetch("https://kea-alt-del.dk/websitecarbon/data/?bytes=415249&green=1")
+function getNewRes(results) {
+  if (improvNr > results.bytes) {
+    newBytes = results.bytes;
+  } else {
+    newBytes = results.bytes - improvNr;
+  }
+  console.log(newBytes);
+  fetch(
+    `https://kea-alt-del.dk/websitecarbon/data/?bytes=${newBytes}&green=${results.hostNr}`
+  )
     .then((res) => res.json())
 
-    .then(gotData);
+    .then(displayNewData);
 
-  function gotData(bags) {
-    console.log("bagS", bags);
+  function displayNewData(newData) {
+    console.log(newData);
+    // document.querySelector("#results-card").animate(fadingIn, 1000);
+    let newPercentage = newData.cleanerThan * 100;
+    if (newPercentage > 50) {
+      document.querySelector("#cleaner-txt").animate(fadingIn, 1000);
+      document.querySelector("#cleaner-txt").classList.remove("hidden");
+      document.querySelector("#dirtier-txt").classList.add("hidden");
+      document.querySelector("#cleaner-nr").textContent = `${numeral(
+        newPercentage
+      ).format("0,0")}%`;
+    } else {
+      document.querySelector("#dirtier-txt").animate(fadingIn, 1000);
+      document.querySelector("#dirtier-txt").classList.remove("hidden");
+      document.querySelector("#cleaner-txt").classList.add("hidden");
+      document.querySelector("#dirtier-nr").textContent = `${
+        100 - numeral(newPercentage).format("0,0")
+      }%`;
+    }
+    document.querySelector("#co2-nr").animate(fadingIn, 1000);
+    document.querySelector("#co2-nr").textContent = numeral(
+      newData.statistics.co2.grid.grams
+    ).format("0,0.000");
+
+    if (results.greenHost) {
+      console.log("is green", results.greenHost);
+      document.querySelector("#green-container").animate(fadingIn, 1000);
+      document.querySelector("#green-container").classList.remove("hidden");
+      document.querySelector("#red-host-container").classList.add("hidden");
+    } else {
+      console.log("is not", results.greenHost);
+      document.querySelector("#red-host-container").animate(fadingIn, 1000);
+      document.querySelector("#green-container").classList.add("hidden");
+      document.querySelector("#red-host-container").classList.remove("hidden");
+    }
+    document.querySelector("#weight-nr").animate(fadingIn, 1000);
+    document.querySelector("#weight-nr").textContent =
+      numeral(newBytes).format("0,0");
   }
 }
 

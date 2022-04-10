@@ -99,7 +99,7 @@
       </div>
     </div>
   </section>
-  <section id="page2">
+  <section id="page2" class="hidden">
     <section id="main">
       <h1 id="url-name">URL Name</h1>
       <section id="parameters">
@@ -200,10 +200,12 @@
                 d="M169,14Q152.98634,162.754,153,171.72691a16.00191,16.00191,0,1,0,32,.05066Q184.98618,162.80475,169,14Zm.0155,168A10,10,0,1,1,179,172.0156,10.03774,10.03774,0,0,1,169.01551,182Z" />
             </svg>
           </div>
-          <h3 class="hidden" id="cleaner-txt"><span class="green-nice">Nice</span>! This Website is cleaner than <span id="cleaner-nr"></span> of
+          <h3 class="hidden" id="cleaner-txt"><span class="green-nice">Nice!</span> This Website is cleaner than <span
+              id="cleaner-nr"></span> of
             the World Wide
             Web.</h3>
-          <h3 class="hidden" id="dirtier-txt"><span class="red-no">Oh no!</span> This Website is dirtier than <span id="dirtier-nr"></span> of
+          <h3 class="hidden" id="dirtier-txt"><span class="red-no">Oh no!</span> This Website is dirtier than <span
+              id="dirtier-nr"></span> of
             the World
             Wide
             Web.</h3>
@@ -215,19 +217,20 @@
           <div id="results-host-container">
             <div id="green-container" class="">
               <!-- <div id="green-host-graph"> -->
-              <img class="weight-img" src="checked1.svg" alt="illustration scale">
+              <img class="weight-img" src="./assets/checked1.svg" alt="green host ilustration">
               <!-- </div> -->
               <h3 id="green-host-txt">This web is runned using <span> renewable energies.</span></h3>
             </div>
-          </div>
-          <div class="hidden" id="red-host-container">
-            <div id="red-host-graph"></div>
-            <h3 id="red-host-txt">This web is runned using <span>non-renewable energies.</span></h3>
+
+            <div class="hidden" id="red-host-container">
+              <img class="weight-img" src="./assets/checked-pink.svg" alt="not green host ilustration">
+              <h3 id="red-host-txt">This web is runned using <span>non-renewable energies.</span></h3>
+            </div>
           </div>
         </div>
         <div id="results-row3">
           <div id="weight-graph">
-            <img class="weight-img" src="scale1.svg" alt="illustration scale">
+            <img class="weight-img" src="./assets/scale1.svg" alt="illustration scale">
           </div>
           <h3 id="weight-txt">This page weighs <span id="weight-nr"> 2571858 </span> bytes.</h3>
         </div>
@@ -235,7 +238,7 @@
     </section>
 
   </section>
-  <script type="module" src="/main.js"></script> 
+  <script type="module" src="/main.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 
 </body>
