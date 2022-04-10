@@ -153,6 +153,7 @@ function prepareObject(dataArr) {
 function resultsReady(results) {
   document.querySelector("#page1").classList.add("hidden");
   document.querySelector("#page2").classList.remove("hidden");
+  document.querySelector(".header-link").classList.remove("hidden");
   showResults(results);
 }
 
