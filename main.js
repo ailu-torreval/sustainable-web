@@ -233,8 +233,15 @@ function showResults(results) {
 }
 
 function displayParamsData(results) {
-  let range = document.querySelector("#imgRange");
-  range.value = 50;
+  // let steps = Math.ceil(results.optImg / 10);
+  let range = document.querySelector('input[type="range"]');
+  range.max = results.optImg;
+  range.value = results.optImg;
+  // range.step = steps;
+  document.querySelector("#max-value").textContent = `${numeral(
+    results.optImg
+  ).format("0,0")} bytes`;
+
   if (results.greenHost) {
     document.querySelector("#green-host").setAttribute("checked", true);
   }
@@ -322,6 +329,17 @@ function displayParamsData(results) {
     }
   });
 
+  document
+    .querySelector('input[type="range"]')
+    .addEventListener("change", (e) => {
+      let rangeInput = results.optImg - e.target.value;
+      console.log("range input", rangeInput);
+      const newNr = improvNr++ + rangeInput;
+      // improvNr = improvNr++ + rangeInput;
+      console.log("newNr", newNr);
+      getRangeResults(results, newNr);
+    });
+
   // document
   //   .querySelector("#opt-lazy-loading")
   //   .addEventListener("chenge", changeOptLazy);
@@ -329,6 +347,20 @@ function displayParamsData(results) {
   //   .querySelector("#resp-img-opt")
   //   .addEventListener("chenge", changeRespImg);
   // document.querySelector("#code-opt").addEventListener("chenge", changeCode);
+}
+
+function getRangeResults(results, newNr) {
+  newBytes = results.bytes - newNr;
+  fetch(
+    `https://kea-alt-del.dk/websitecarbon/data/?bytes=${newBytes}&green=${results.hostNr}`
+  )
+    .then((res) => res.json())
+
+    .then(prepareRangeData);
+
+  function prepareRangeData(newData) {
+    displayNewData(results, newData);
+  }
 }
 
 function getNewRes(results) {
@@ -343,58 +375,58 @@ function getNewRes(results) {
   )
     .then((res) => res.json())
 
-    .then(displayNewData);
+    .then(prepareNewData);
 
-  function displayNewData(newData) {
-    console.log(newData);
-    let newPercentage = newData.cleanerThan * 100;
-
-    let newGraphNr = newPercentage - 90;
-    console.log(newGraphNr);
-    document.documentElement.style.setProperty(
-      "--needle-position",
-      `rotate(${newGraphNr}deg)`
-    );
-    document.querySelector("#tick").classList.add("tick-animate");
-    // document.querySelector("#cleaner-graph").animate(fadingIn, 1000);
-
-    // document.querySelector("#results-card").animate(fadingIn, 1000);
-    if (newPercentage > 50) {
-      document.querySelector("#cleaner-txt").animate(fadingIn, 1000);
-      document.querySelector("#cleaner-txt").classList.remove("hidden");
-      document.querySelector("#dirtier-txt").classList.add("hidden");
-      document.querySelector("#cleaner-nr").textContent = `${numeral(
-        newPercentage
-      ).format("0,0")}%`;
-    } else {
-      document.querySelector("#dirtier-txt").animate(fadingIn, 1000);
-      document.querySelector("#dirtier-txt").classList.remove("hidden");
-      document.querySelector("#cleaner-txt").classList.add("hidden");
-      document.querySelector("#dirtier-nr").textContent = `${
-        100 - numeral(newPercentage).format("0,0")
-      }%`;
-    }
-    document.querySelector("#co2-nr").animate(fadingIn, 1000);
-    document.querySelector("#co2-nr").textContent = numeral(
-      newData.statistics.co2.grid.grams
-    ).format("0,0.000");
-
-    if (results.greenHost) {
-      console.log("is green", results.greenHost);
-      document.querySelector("#green-container").animate(fadingIn, 1000);
-      document.querySelector("#green-container").classList.remove("hidden");
-      document.querySelector("#red-host-container").classList.add("hidden");
-    } else {
-      console.log("is not", results.greenHost);
-      document.querySelector("#red-host-container").animate(fadingIn, 1000);
-      document.querySelector("#green-container").classList.add("hidden");
-      document.querySelector("#red-host-container").classList.remove("hidden");
-    }
-    document.querySelector("#weight-nr").animate(fadingIn, 1000);
-    document.querySelector("#weight-nr").textContent =
-      numeral(newBytes).format("0,0");
+  function prepareNewData(newData) {
+    displayNewData(results, newData);
   }
 }
+function displayNewData(results, newData) {
+  console.log(newData);
+  let newPercentage = newData.cleanerThan * 100;
+  let newGraphNr = newPercentage - 90;
+  console.log(newGraphNr);
+  document.documentElement.style.setProperty(
+    "--needle-position",
+    `rotate(${newGraphNr}deg)`
+  );
+  document.querySelector("#tick").classList.add("tick-animate");
+  if (newPercentage > 50) {
+    document.querySelector("#cleaner-txt").animate(fadingIn, 1000);
+    document.querySelector("#cleaner-txt").classList.remove("hidden");
+    document.querySelector("#dirtier-txt").classList.add("hidden");
+    document.querySelector("#cleaner-nr").textContent = `${numeral(
+      newPercentage
+    ).format("0,0")}%`;
+  } else {
+    document.querySelector("#dirtier-txt").animate(fadingIn, 1000);
+    document.querySelector("#dirtier-txt").classList.remove("hidden");
+    document.querySelector("#cleaner-txt").classList.add("hidden");
+    document.querySelector("#dirtier-nr").textContent = `${
+      100 - numeral(newPercentage).format("0,0")
+    }%`;
+  }
+  document.querySelector("#co2-nr").animate(fadingIn, 1000);
+  document.querySelector("#co2-nr").textContent = numeral(
+    newData.statistics.co2.grid.grams
+  ).format("0,0.000");
+
+  if (results.greenHost) {
+    console.log("is green", results.greenHost);
+    document.querySelector("#green-container").animate(fadingIn, 1000);
+    document.querySelector("#green-container").classList.remove("hidden");
+    document.querySelector("#red-host-container").classList.add("hidden");
+  } else {
+    console.log("is not", results.greenHost);
+    document.querySelector("#red-host-container").animate(fadingIn, 1000);
+    document.querySelector("#green-container").classList.add("hidden");
+    document.querySelector("#red-host-container").classList.remove("hidden");
+  }
+  document.querySelector("#weight-nr").animate(fadingIn, 1000);
+  document.querySelector("#weight-nr").textContent =
+    numeral(newBytes).format("0,0");
+}
+// }
 
 // dataArr[1]["unminified-javascript"];
 
