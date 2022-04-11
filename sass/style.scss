@@ -302,11 +302,13 @@ input[type="range"] {
 }
 .green-nice {
   color: var(--dark-blue);
-  font-size: 1.563rem;
+  font-weight: 600;
+  font-size: 1.8rem;
 }
 .red-no {
-  color: #cc0056;
-  font-size: 1.563rem;
+  color: hotpink;
+  font-weight: 600;
+  font-size: 1.8rem;
 }
 #cleaner-txt,
 #dirtier-txt,
