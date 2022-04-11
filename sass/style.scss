@@ -31,6 +31,9 @@
   );
 
   --body-font: "Ubuntu", sans-serif;
+  --needle-position: rotate(66deg);
+  --focus-invalid: 1px solid #63bf95;
+  // 1.5px solid hotpink
 }
 body {
   font-family: var(--body-font);
@@ -122,21 +125,41 @@ form {
     outline: none;
     border: 1px solid #63bf95;
   }
-  // input:invalid:not(:placeholder-shown, :focus) {
-  //   outline: none;
-  //   border: 1px solid #cc0056;
-  // }
+
+  input:invalid:focus {
+    border: var(--focus-invalid);
+  }
+
+  .border-invalid {
+    border: 1px solid hotpink;
+    // animation: border 1s linear 1;
+  }
 
   .url-invalid,
   .email-invalid {
     grid-column: 2;
-    display: none;
+    align-self: start;
+    line-height: 0;
+    margin-bottom: 0.5rem;
+    top: 0;
+    margin-top: -6px;
+    font-style: italic;
   }
   .text-invalid {
     font-size: 0.8rem;
-    color: #d33558;
+    color: hotpink;
   }
 }
+
+//   .text-invalid {
+//     grid-column: 2;
+//     align-self: start;
+//     line-height: 0;
+//     margin-bottom: 0.5rem;
+//     font-size: 0.8rem;
+//     color: #d33558;
+//   }
+// }
 
 #form-container {
   // box-shadow: 1px 1px 9px var(--black);
@@ -228,6 +251,11 @@ input[type="range"] {
   width: 100%;
 }
 
+#range-values {
+  display: flex;
+  justify-content: space-between;
+}
+
 #img-title {
   margin-block-end: 0.5rem;
 }
@@ -296,9 +324,9 @@ input[type="range"] {
 
 #cleaner-graph,
 #red-host-graph {
-  height: 200px;
+  // height: 200px;
   width: 200px;
-  background-color: white;
+  // background-color: white;
 }
 .green-nice {
   color: var(--dark-blue);
@@ -310,6 +338,19 @@ input[type="range"] {
   font-weight: 600;
   font-size: 1.8rem;
 }
+
+#green-host-txt span {
+  color: var(--dark-blue);
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+#red-host-txt span {
+  color: hotpink;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
 #cleaner-txt,
 #dirtier-txt,
 #green-host-txt,
@@ -656,13 +697,19 @@ input[type="range"] {
 
 #tick {
   transform-origin: center 90%;
-  animation: tick-toggle linear forwards 3s;
   transform: rotate(-90deg);
 }
 
+.tick-animate {
+  animation: tick-toggle linear forwards 2s;
+}
+
 @keyframes tick-toggle {
+  from {
+    transform: rotate(-90deg);
+  }
   to {
-    transform: rotate(66deg);
+    transform: var(--needle-position);
   }
 }
 
@@ -672,4 +719,16 @@ input[type="range"] {
 
 .cls-2 {
   fill-rule: evenodd;
+  fill: var(--white);
+}
+
+@media screen and (min-width: 1500px) {
+  #page2 {
+    margin-left: 8%;
+    margin-right: 10%;
+
+    #main {
+      column-gap: 4rem;
+    }
+  }
 }

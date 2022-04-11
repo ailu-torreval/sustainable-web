@@ -48,10 +48,42 @@ const Results = {
 };
 
 function checkSubmit() {
-  if (form.checkValidity()) {
-    submitUrl();
+  let urlField = document.querySelector('input[name="url"]');
+  let emailField = document.querySelector('input[name="email"]');
+  urlField.classList.remove("border-invalid");
+  emailField.classList.remove("border-invalid");
+  document.documentElement.style.setProperty(
+    "--focus-invalid",
+    "1.5px solid hotpink"
+  );
+  if (urlField.checkValidity()) {
+    if (emailField.checkValidity()) {
+      submitUrl();
+    } else {
+      document.querySelector(".email-invalid").animate(fadingIn, 200);
+      document.querySelector(".url-invalid").classList.add("hidden");
+      document.querySelector(".email-invalid").classList.remove("hidden");
+      emailField.classList.add("border-invalid");
+
+      console.log("url true, email false");
+    }
   } else {
-    console.log("please fill fields correctly");
+    if (emailField.checkValidity()) {
+      document.querySelector(".url-invalid").animate(fadingIn, 200);
+      document.querySelector(".url-invalid").classList.remove("hidden");
+      document.querySelector(".email-invalid").classList.add("hidden");
+      urlField.classList.add("border-invalid");
+
+      console.log("email true, url false");
+    } else {
+      console.log("both false");
+      document.querySelector(".email-invalid").animate(fadingIn, 200);
+      document.querySelector(".url-invalid").animate(fadingIn, 200);
+      document.querySelector(".url-invalid").classList.remove("hidden");
+      document.querySelector(".email-invalid").classList.remove("hidden");
+      emailField.classList.add("border-invalid");
+      urlField.classList.add("border-invalid");
+    }
   }
 }
 
@@ -162,6 +194,13 @@ function resultsReady(results) {
 
 function showResults(results) {
   console.log("res", results);
+  let graphNr = results.cleanerThan - 90;
+  console.log(graphNr);
+  document.documentElement.style.setProperty(
+    "--needle-position",
+    `rotate(${graphNr}deg)`
+  );
+  document.querySelector("#tick").classList.add("tick-animate");
   document.querySelector("#url-name").textContent = results.company;
   if (results.cleanerThan > 50) {
     document.querySelector("#cleaner-txt").classList.remove("hidden");
@@ -194,6 +233,8 @@ function showResults(results) {
 }
 
 function displayParamsData(results) {
+  let range = document.querySelector("#imgRange");
+  range.value = 50;
   if (results.greenHost) {
     document.querySelector("#green-host").setAttribute("checked", true);
   }
@@ -306,8 +347,18 @@ function getNewRes(results) {
 
   function displayNewData(newData) {
     console.log(newData);
-    // document.querySelector("#results-card").animate(fadingIn, 1000);
     let newPercentage = newData.cleanerThan * 100;
+
+    let newGraphNr = newPercentage - 90;
+    console.log(newGraphNr);
+    document.documentElement.style.setProperty(
+      "--needle-position",
+      `rotate(${newGraphNr}deg)`
+    );
+    document.querySelector("#tick").classList.add("tick-animate");
+    // document.querySelector("#cleaner-graph").animate(fadingIn, 1000);
+
+    // document.querySelector("#results-card").animate(fadingIn, 1000);
     if (newPercentage > 50) {
       document.querySelector("#cleaner-txt").animate(fadingIn, 1000);
       document.querySelector("#cleaner-txt").classList.remove("hidden");

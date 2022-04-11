@@ -38,7 +38,7 @@
           <input type="url" name="url" autocomplete="off" required
             value="https://www.lapa.ninja/blog/free-illustrations-library-for-your-project/">
 
-          <div class="url-invalid">
+          <div class="url-invalid hidden">
             <span class="text-invalid">Please put in a valid URL</span>
           </div>
 
@@ -48,7 +48,7 @@
           </label>
           <input type="email" name="email" autocomplete="off" required value="a@a.dk">
 
-          <div class="email-invalid">
+          <div class="email-invalid hidden">
             <span class="text-invalid">Please put in a valid email</span>
           </div>
 
@@ -110,6 +110,10 @@
               <h3 id="img-title" class="par-text">Re-size Images</h3>
               <div class="slidecontainer">
                 <input type="range" min="1" max="100" value="100" id="ImgRange">
+                <div id="range-values">
+                  <output>0</output>
+                  <output id="max-value" value="100">100</output>
+                </div>
               </div>
             </div>
             <p id="img-txt">Changing the image sizes and swapping for more modern image formats can be a huge
@@ -185,9 +189,11 @@
               <defs>
 
                 <linearGradient id="barometer" y1="86" x2="338" y2="86" gradientUnits="userSpaceOnUse">
-                  <stop offset="0.10855" stop-color="#9a3d37" />
+                  <stop offset="0.10855" stop-color="   #F2508B" />
+                  <stop offset="0.81278" stop-color="#56C793" />
+                  <!-- <stop offset="0.10855" stop-color="#9a3d37" />
                   <stop offset="0.26755" stop-color="#c68736" />
-                  <stop offset="0.35322" stop-color="#dbaa35" />
+                  <stop offset="0.35322" stop-color="#dbaa35" /> -->
                   <!-- <stop offset="0.58524" stop-color="#dbaa35" />
                 <stop offset="0.64244" stop-color="#c6a236" />
                 <stop offset="0.75998" stop-color="#908c38" />
