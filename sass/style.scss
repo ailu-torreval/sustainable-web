@@ -102,7 +102,7 @@ a {
 }
 #page2 {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 4rem;
   padding: 2rem 6rem 6rem 6rem;
 }
@@ -213,7 +213,7 @@ select {
 }
 #main {
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 0.6fr 1fr;
   gap: 2rem;
   h1 {
     // margin-block-start: 1rem;
@@ -316,7 +316,8 @@ input[type="range"] {
 }
 
 #results-row1,
-#results-row3 {
+#results-row3,
+#share-sect {
   border-radius: 10px;
   background-color: var(--glass);
   padding: 1.5rem;
@@ -418,6 +419,31 @@ input[type="range"] {
   color: #b8b8b8;
   max-width: 19vw;
 }
+
+#share-sect {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#share-title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#share-sect p {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 0.8rem;
+}
+
+#share-btns {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
 //button
 .draw-border {
   // box-shadow: inset 0 0 0 2px #63bf95;
