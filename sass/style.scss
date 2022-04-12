@@ -457,6 +457,12 @@ input[type="range"] {
   border-radius: 5px;
   font-family: var(--body-font);
   font-size: 1rem;
+  // border: 3px solid var(--box-green);
+  font-weight: 800;
+  line-height: 1.5;
+  padding: 0.4em 2em;
+  letter-spacing: 0.05rem;
+  outline-style: none;
 }
 
 #share-btn {
@@ -466,12 +472,18 @@ input[type="range"] {
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  background-color: var(--dark-blue);
+  background-color: var(--white);
   color: var(--box-green);
   border: none;
   border-radius: 5px;
   font-family: var(--body-font);
   font-size: 1rem;
+  // border: 3px solid var(--box-green);
+  font-weight: 800;
+  line-height: 1.5;
+  padding: 0.4em 2em;
+  letter-spacing: 0.05rem;
+  outline-style: none;
 }
 
 //button
