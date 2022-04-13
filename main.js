@@ -194,15 +194,16 @@ function resultsReady(results) {
 
 function showResults(results) {
   console.log("res", results);
-  let graphNr = results.cleanerThan - 90;
-  console.log(graphNr);
+
+  let GraphNr = (results.cleanerThan - 50) * 1.8;
   document.documentElement.style.setProperty(
     "--needle-position",
-    `rotate(${graphNr}deg)`
+    `rotate(${GraphNr}deg)`
   );
+  console.log(GraphNr);
   document.querySelector("#tick").classList.add("tick-animate");
   document.querySelector("#url-name").textContent = results.company;
-  if (results.cleanerThan > 50) {
+  if (results.cleanerThan >= 50) {
     document.querySelector("#cleaner-txt").classList.remove("hidden");
     document.querySelector("#dirtier-txt").classList.add("hidden");
     document.querySelector(
@@ -233,11 +234,9 @@ function showResults(results) {
 }
 
 function displayParamsData(results) {
-  // let steps = Math.ceil(results.optImg / 10);
   let range = document.querySelector('input[type="range"]');
   range.max = results.optImg;
   range.value = results.optImg;
-  // range.step = steps;
   document.querySelector("#max-value").textContent = `${numeral(
     results.optImg
   ).format("0,0")} bytes`;
@@ -339,14 +338,6 @@ function displayParamsData(results) {
       console.log("newNr", newNr);
       getRangeResults(results, newNr);
     });
-
-  // document
-  //   .querySelector("#opt-lazy-loading")
-  //   .addEventListener("chenge", changeOptLazy);
-  // document
-  //   .querySelector("#resp-img-opt")
-  //   .addEventListener("chenge", changeRespImg);
-  // document.querySelector("#code-opt").addEventListener("chenge", changeCode);
 }
 
 function getRangeResults(results, newNr) {
@@ -384,12 +375,19 @@ function getNewRes(results) {
 function displayNewData(results, newData) {
   console.log(newData);
   let newPercentage = newData.cleanerThan * 100;
-  let newGraphNr = newPercentage - 90;
-  console.log(newGraphNr);
+  let newGraphNr = (newPercentage - 50) * 1.8;
   document.documentElement.style.setProperty(
     "--needle-position",
     `rotate(${newGraphNr}deg)`
   );
+  console.log("newGraph Nr", newGraphNr);
+  // console.log(GraphNr);
+  // let newGraphNr = newPercentage - 90;
+  // console.log(newGraphNr);
+  // document.documentElement.style.setProperty(
+  //   "--needle-position",
+  //   `rotate(${newGraphNr}deg)`
+  // );
   document.querySelector("#tick").classList.add("tick-animate");
   if (newPercentage > 50) {
     document.querySelector("#cleaner-txt").animate(fadingIn, 1000);

@@ -120,6 +120,7 @@ form {
     border-radius: 5px;
     background-color: transparent;
     border: 0.6px solid rgb(184, 184, 184);
+    padding-left: 0.3rem;
   }
   input:focus {
     outline: none;
@@ -441,7 +442,11 @@ input[type="range"] {
 #share-btns {
   display: flex;
   justify-content: space-between;
-  gap: 3rem;
+  gap: 2rem;
+}
+
+#share-mail {
+  color: var(--box-green);
 }
 
 #mail-to {
@@ -781,9 +786,6 @@ input[type="range"] {
 }
 
 @keyframes tick-toggle {
-  from {
-    transform: rotate(-90deg);
-  }
   to {
     transform: var(--needle-position);
   }
