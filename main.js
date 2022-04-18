@@ -2,8 +2,6 @@
 import "./sass/style.scss";
 
 document.querySelector(".submit-btn").addEventListener("click", checkSubmit);
-// resultsReady();
-
 const form = document.querySelector("form");
 form.setAttribute("novalidate", true);
 
@@ -13,22 +11,23 @@ let resultsArr = [];
 let improvNr = 0;
 let newBytes = 0;
 
-let fixedResults = {
-  company: "infobae",
-  mail: "s@s.com",
-  companyUrl: "https://www.infobae.com/america/",
-  bytes: 2647717,
-  cleanerThan: 34,
-  gridCo2: 1.5962,
-  renewCo2: 1.4466,
-  lazyImg: 814699,
-  respImg: 206178,
-  optImg: 734825,
-  optCode: 298160,
-  lazyLoading: true,
-  greenHost: true,
-  try: 593851.9572000001,
-};
+// FAKE RESULTS FOR TESTING
+// let fixedResults = {
+//   company: "infobae",
+//   mail: "s@s.com",
+//   companyUrl: "https://www.infobae.com/america/",
+//   bytes: 2647717,
+//   cleanerThan: 34,
+//   gridCo2: 1.5962,
+//   renewCo2: 1.4466,
+//   lazyImg: 814699,
+//   respImg: 206178,
+//   optImg: 734825,
+//   optCode: 298160,
+//   lazyLoading: true,
+//   greenHost: true,
+//   try: 593851.9572000001,
+// };
 
 const Results = {
   companyUrl: "",
@@ -64,8 +63,6 @@ function checkSubmit() {
       document.querySelector(".url-invalid").classList.add("hidden");
       document.querySelector(".email-invalid").classList.remove("hidden");
       emailField.classList.add("border-invalid");
-
-      console.log("url true, email false");
     }
   } else {
     if (emailField.checkValidity()) {
@@ -73,10 +70,7 @@ function checkSubmit() {
       document.querySelector(".url-invalid").classList.remove("hidden");
       document.querySelector(".email-invalid").classList.add("hidden");
       urlField.classList.add("border-invalid");
-
-      console.log("email true, url false");
     } else {
-      console.log("both false");
       document.querySelector(".email-invalid").animate(fadingIn, 200);
       document.querySelector(".url-invalid").animate(fadingIn, 200);
       document.querySelector(".url-invalid").classList.remove("hidden");
@@ -170,15 +164,6 @@ function prepareObject(dataArr) {
     results.hostNr = 0;
   }
 
-  // let totalSum =
-  //   results.gridCo2 +
-  //   results.renewCo2 +
-  //   results.lazyImg +
-  //   results.respImg +
-  //   results.optImg +
-  //   results.optCode;
-  // results.try = results.bytes - totalSum;
-
   console.log(results);
   resultsArr.push(results);
   resultsReady(results);
@@ -264,7 +249,6 @@ function displayParamsData(results) {
     results.optCode
   ).format("0,0");
 
-  // document.querySelector("#imgRange").addEventListener("chenge", changeSlider);
   document.querySelector("#green-host").addEventListener("change", (e) => {
     if (e.target.checked) {
       console.log("is checked");
@@ -291,7 +275,6 @@ function displayParamsData(results) {
     .querySelector("#opt-lazy-loading")
     .addEventListener("change", (e) => {
       if (e.target.checked) {
-        // improvNr.push(fixedResults.lazyImg);
         improvNr = improvNr++ + results.lazyImg;
         console.log(improvNr);
         getNewRes(results);
@@ -334,7 +317,6 @@ function displayParamsData(results) {
       let rangeInput = results.optImg - e.target.value;
       console.log("range input", rangeInput);
       const newNr = improvNr++ + rangeInput;
-      // improvNr = improvNr++ + rangeInput;
       console.log("newNr", newNr);
       getRangeResults(results, newNr);
     });
@@ -374,6 +356,7 @@ function getNewRes(results) {
 }
 function displayNewData(results, newData) {
   console.log(newData);
+  // barometer animation calculations
   let newPercentage = newData.cleanerThan * 100;
   let newGraphNr = (newPercentage - 50) * 1.8;
   document.documentElement.style.setProperty(
@@ -381,14 +364,10 @@ function displayNewData(results, newData) {
     `rotate(${newGraphNr}deg)`
   );
   console.log("newGraph Nr", newGraphNr);
-  // console.log(GraphNr);
-  // let newGraphNr = newPercentage - 90;
-  // console.log(newGraphNr);
-  // document.documentElement.style.setProperty(
-  //   "--needle-position",
-  //   `rotate(${newGraphNr}deg)`
-  // );
   document.querySelector("#tick").classList.add("tick-animate");
+
+
+
   if (newPercentage > 50) {
     document.querySelector("#cleaner-txt").animate(fadingIn, 1000);
     document.querySelector("#cleaner-txt").classList.remove("hidden");
@@ -424,13 +403,8 @@ function displayNewData(results, newData) {
   document.querySelector("#weight-nr").textContent =
     numeral(newBytes).format("0,0");
 }
-// }
 
-// dataArr[1]["unminified-javascript"];
-
-// document
-//   .querySelector(".submit-btn")
-//   .addEventListener("click", showLoadingText);
+// LOADING ANIMATIONS
 
 function showLoadingText() {
   setTimeout(showText, 1000);
@@ -460,12 +434,11 @@ function showThirdText() {
   setTimeout(loop, 2000);
 }
 
+
+// FADE IN ANIMATIONS
+
 const fadingIn = [{ opacity: 0 }, { opacity: 1 }];
-
-const fadingOut = [{ opacity: 1 }, { opacity: 0 }];
-
 let element = document.querySelector("#page1");
 element.animate(fadingIn, 1000);
 
-var string = numeral(123456789).format("0,0");
-console.log("nr", string);
+
